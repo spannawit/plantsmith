@@ -1,0 +1,37 @@
+@startwbs
+' Ownership tree (STYLE rule 19): who owns what, top to bottom, elbow lines by construction.
+' Edit below the end marker. An authority matrix (who decides, who is told) goes in the legend as
+' a Creole table. The same header starts templates/skeleton-cause-tree.puml.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+wbsDiagram {
+  .data { BackgroundColor #E3F2FD }
+  .process { BackgroundColor #E8F5E9 }
+  .tooling { BackgroundColor #FFF3E0 }
+  .people { BackgroundColor #F3E5F5 }
+  .failure { BackgroundColor #FADBD8 }
+  .gate { BackgroundColor #FFFFFF; LineThickness 2 }
+}
+</style>
+' house-preamble-end
+
+title Ownership tree for <scope> (as-of date)
+
+* Replace: owner (team or role)
+** Replace: area A
+*** Replace: system or repo
+*** Replace: system or repo
+** Replace: area B
+*** Replace: system or repo
+
+legend right
+  |= Decision |= Decides |= Consulted |= Told |
+  | Replace: deploy to prod | Replace: role | Replace: role | Replace: role |
+endlegend
+@endwbs

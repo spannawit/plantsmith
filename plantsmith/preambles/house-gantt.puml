@@ -1,0 +1,19 @@
+@startgantt
+' House preamble for DATED timelines only. Every bar or milestone needs a date the
+' source states; undated steps go in a note marked "no date", never on the time axis.
+' Start a timeline as this file followed by templates/skeleton-gantt.puml; edit only below the end marker.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+ganttDiagram {
+  task { BackgroundColor #E3F2FD; LineColor #555555 }
+  milestone { BackgroundColor #555555 }
+}
+</style>
+printscale weekly
+' house-preamble-end

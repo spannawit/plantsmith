@@ -1,0 +1,61 @@
+@startuml
+' House preamble for Microsoft Azure diagrams (PlantUML stdlib `azure` = Azure-PlantUML 2.2.0).
+' Start a diagram as this file followed by templates/skeleton-azure.puml; edit only below the marker.
+' Rule (STYLE rule 14): use this library only when the sources name Azure; each provider's own icons
+' for its own services. Each service needs its own include, below the marker. Proven on 1.2026.8:
+'   !include <azure/Storage/AzureBlobStorage>             AzureBlobStorage(alias, "label", "technology")
+'   !include <azure/Storage/AzureDataLakeStorage>
+'   !include <azure/Databases/AzureSqlDatabase>
+'   !include <azure/Analytics/AzureSynapseAnalytics>
+'   !include <azure/Databases/AzureDataFactory>            (Data Factory lives under Databases)
+'   !include <azure/Analytics/AzureDatabricks>
+'   !include <azure/Analytics/AzureEventHub>
+'   !include <azure/Compute/AzureFunction>
+'   !include <azure/Containers/AzureKubernetesService>     AKS
+'   !include <azure/Security/AzureKeyVault>
+'   !include <azure/Identity/AzureActiveDirectory>
+'   !include <azure/Networking/AzureVirtualNetwork>
+' Macro form: Service(alias, "label", "technology"[, "description"]). Always pass the technology.
+' The library has no group macros: frames are `rectangle "Microsoft Azure" as az <<AzureCloud>> { }`
+' and `rectangle "Stage" as s <<AzureStage>> { }`, styled once below (the Azure portal blue).
+' Stated subscriptions, resource groups or VNets get their own <<AzureStage>> frame, titled with
+' what the source says; unstated ones are absent.
+' draw.io conventions (reference § GCP and Azure conventions): title option
+'   title Architecture: <Domain> > <Pattern>
+' labels "Role / Product" ("Log processing" + technology "Dataflow"); zone pastels as
+' <<ZoneProcessing>> <<ZoneStorage>> <<ZoneAnalytics>> <<ZoneServing>> <<ZoneOnPrem>> <<ZoneExternal>>
+' (meanings INFERRED from template labels); Batch / Streaming = <<LogicalFrame>> (dashed border).
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+skinparam nodesep 60
+skinparam ranksep 80
+hide stereotype
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+.AzureCloud { LineColor #0078D4; LineThickness 2; FontColor #0078D4; FontStyle bold; HorizontalAlignment left }
+.AzureStage { LineColor #50E6FF; LineStyle 6; LineThickness 2; BackgroundColor #F2FAFF; HorizontalAlignment left }
+.ZoneProcessing { BackgroundColor #E1F5FE; LineColor #E1F5FE; HorizontalAlignment left }
+.ZoneStorage { BackgroundColor #FFF8E1; LineColor #FFF8E1; HorizontalAlignment left }
+.ZoneAnalytics { BackgroundColor #F1F8E9; LineColor #F1F8E9; HorizontalAlignment left }
+.ZoneServing { BackgroundColor #F3E5F5; LineColor #F3E5F5; HorizontalAlignment left }
+.ZoneOnPrem { BackgroundColor #EFEBE9; LineColor #EFEBE9; HorizontalAlignment left }
+.ZoneExternal { BackgroundColor #FFEBEE; LineColor #FFEBEE; HorizontalAlignment left }
+.LogicalFrame { LineColor #4284F3; LineStyle 6; LineThickness 2; BackgroundColor transparent; FontColor #4284F3; HorizontalAlignment left }
+.NotStated { LineColor #999999; LineStyle 2; FontColor #666666; HorizontalAlignment left }
+</style>
+!include <azure/AzureCommon>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end

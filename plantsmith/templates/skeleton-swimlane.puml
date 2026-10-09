@@ -1,0 +1,32 @@
+
+' Swimlane activity (runbooks, DAG task flow, decision trees). Start from preambles/house.puml +
+' this file. One lane per role or system (`|Lane|`), lanes are columns; every decision says
+' Yes / No on its branches; start and stop are explicit. Lines are drawn with elbows by the
+' activity engine itself (linetype does not apply).
+
+title Activity diagram for <runbook or flow> (as-of date)
+
+|Replace: role A|
+start
+:Replace: first step;
+|Replace: role B|
+:Replace: second step;
+if (Replace: check?) then (Yes)
+  :Replace: step on Yes;
+else (No)
+  |Replace: role A|
+  :Replace: step on No;
+  stop
+endif
+|Replace: role B|
+:Replace: last step;
+stop
+
+legend right
+  |= Mark |= Meaning |
+  | column | one role or system |
+  | rounded box | step |
+  | hexagon | decision, branches Yes / No |
+  | circle / ringed dot | start / stop |
+endlegend
+@enduml

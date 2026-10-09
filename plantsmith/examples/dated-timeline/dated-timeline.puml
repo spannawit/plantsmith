@@ -1,0 +1,42 @@
+@startgantt
+' Source (synthetic brief): Lease renewed 2 Mar 2026. Shelving ordered 9 Mar, fitted
+' 20 Mar to 10 Apr. Stock moved back 13 to 17 Apr. Staff training 20 to 24 Apr.
+' Reopening day 1 May. Fire inspection and signage install happen "before reopening"
+' with no date given.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+ganttDiagram {
+  task { BackgroundColor #E3F2FD; LineColor #555555 }
+  milestone { BackgroundColor #555555 }
+}
+</style>
+printscale weekly
+' house-preamble-end
+
+title Shop refit and reopening, spring 2026 (dated timeline)
+Project starts 2026-03-02
+printscale weekly with calendar date
+[Lease renewed] happens 2026-03-02
+[Shelving ordered] happens 2026-03-09
+[Shelving fitted] starts 2026-03-20 and ends 2026-04-10
+[Stock moved back] starts 2026-04-13 and ends 2026-04-17
+[Staff training] starts 2026-04-20 and ends 2026-04-24
+[Reopening day] happens 2026-05-01
+note bottom
+  Before reopening, no date in source:
+  fire inspection, signage install
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | bar | dated work, start and end stated |
+  | diamond | dated milestone |
+  | note | step with no date in source |
+endlegend
+@endgantt

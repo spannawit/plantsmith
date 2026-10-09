@@ -1,0 +1,39 @@
+@startuml
+' House preamble for C4 diagrams (System Context and Container) on PlantUML's bundled C4
+' stdlib. Start a diagram as this file followed by templates/skeleton-c4.puml; edit only
+' below the end marker. Context diagram: change the include line to <C4/C4_Context>.
+' Orthogonal lines as everywhere (STYLE "No noodle lines"). C4's two-line labels need room:
+' the preamble opens nodesep/ranksep; steer with Rel_D/U/L/R, Lay_D/Lay_R and short intent
+' labels (reference § Layout moves, D).
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam nodesep 120
+skinparam ranksep 110
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+</style>
+!include <C4/C4_Container>
+LAYOUT_TOP_DOWN()
+' House palette: one colour per element type, each with its legend text (STYLE rule 9).
+UpdateElementStyle("person", $bgColor="#F3E5F5", $fontColor="#000000", $borderColor="#8E6CA8", $legendText="person")
+UpdateElementStyle("system", $bgColor="#E3F2FD", $fontColor="#000000", $borderColor="#5B8DB8", $legendText="software system")
+UpdateElementStyle("external_system", $bgColor="#EEEEEE", $fontColor="#000000", $borderColor="#888888", $legendText="external system")
+UpdateElementStyle("container", $bgColor="#E3F2FD", $fontColor="#000000", $borderColor="#5B8DB8", $legendText="container")
+UpdateElementStyle("external_container", $bgColor="#EEEEEE", $fontColor="#000000", $borderColor="#888888", $legendText="external container")
+AddElementTag("failure", $bgColor="#FADBD8", $fontColor="#000000", $borderColor="#C0392B", $legendText="failure point")
+AddRelTag("inferred", $lineStyle=DashedLine(), $legendText="inferred, not stated in the source")
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end

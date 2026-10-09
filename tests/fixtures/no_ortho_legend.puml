@@ -1,0 +1,7 @@
+@startuml
+title T
+rectangle "A" as a
+legend right
+ | x | y |
+endlegend
+@enduml

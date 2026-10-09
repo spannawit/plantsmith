@@ -1,0 +1,69 @@
+@startuml
+' House preamble for cloud / infrastructure diagrams with the official AWS Architecture Icons
+' (PlantUML stdlib awslib20 = awslabs/aws-icons-for-plantuml v20.0). Start a diagram as this
+' file followed by templates/skeleton-aws.puml; edit only below the end marker.
+' Rule: when the sources name an AWS service, draw it with its icon macro, never a plain shape.
+' Each service needs its own include, below the marker. Paths proven on PlantUML 1.2026.8:
+'   !include <awslib20/Analytics/Redshift>                              Redshift(alias, "label", "tech")
+'   !include <awslib20/Storage/SimpleStorageService>                    S3 service
+'   !include <awslib20/Storage/SimpleStorageServiceBucket>              one S3 bucket
+'   !include <awslib20/Analytics/Glue>
+'   !include <awslib20/Analytics/Athena>
+'   !include <awslib20/Analytics/LakeFormation>
+'   !include <awslib20/Analytics/QuickSight>
+'   !include <awslib20/Containers/ElasticKubernetesService>             EKS
+'   !include <awslib20/ApplicationIntegration/ManagedWorkflowsforApacheAirflow>   MWAA (Airflow)
+'   !include <awslib20/ApplicationIntegration/StepFunctions>
+'   !include <awslib20/ApplicationIntegration/EventBridge>
+'   !include <awslib20/ApplicationIntegration/SimpleQueueService>       SQS
+'   !include <awslib20/ApplicationIntegration/SimpleNotificationService> SNS
+'   !include <awslib20/Compute/EC2>  <awslib20/Compute/EC2Instance>  <awslib20/Compute/Lambda>
+'   !include <awslib20/Database/RDS>  <awslib20/Database/Aurora>
+'   !include <awslib20/ManagementGovernance/CloudWatch>
+'   !include <awslib20/SecurityIdentityCompliance/IdentityandAccessManagement>   IAM
+'   !include <awslib20/NetworkingContentDelivery/VirtualPrivateCloud>
+'   !include <awslib20/NetworkingContentDelivery/ElasticLoadBalancing>
+'   !include <awslib20/NetworkingContentDelivery/VPCInternetGateway>
+'   !include <awslib20/General/Users>
+' Macro form: Service(alias, "label", "technology"). Always pass a real technology
+' ("nginx, Elastic IP", "PostgreSQL"): a 2-argument call fails ("Function not found") and
+' an empty "" prints "[]" (lint ERROR icon-empty-tech).
+' GenericGroup(alias, "Stage") { } frames a stage or any grouping that is not an AWS construct.
+' Groups nest like the AWS architecture guideline: AWSCloudGroup > RegionGroup > VPCGroup >
+' AvailabilityZoneGroup > PublicSubnetGroup / PrivateSubnetGroup > AutoScalingGroupGroup.
+' Sibling groups (two AZs) sit side by side, row for row, with pins between corresponding
+' elements (rp1 -[hidden]right- rp2, db1 -[hidden]right- db2) plus explicit -down-> edges
+' (reference § Layout moves, E). Orthogonal edges stay on: icon labels are short.
+' `hide stereotype` is required: otherwise every icon prints its «EC2Instance» stereotype.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+skinparam nodesep 40
+skinparam ranksep 50
+hide stereotype
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+</style>
+!include <awslib20/AWSCommon>
+!include <awslib20/Groups/AWSCloud>
+!include <awslib20/Groups/Generic>
+!include <awslib20/Groups/Region>
+!include <awslib20/Groups/VPC>
+!include <awslib20/Groups/AvailabilityZone>
+!include <awslib20/Groups/PublicSubnet>
+!include <awslib20/Groups/PrivateSubnet>
+!include <awslib20/Groups/AutoScalingGroup>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end

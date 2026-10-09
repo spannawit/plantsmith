@@ -1,0 +1,79 @@
+@startuml
+' Source (synthetic brief): The shop floor runs a till and a stock-scanner app, both
+' writing to the stock service. The web shop serves search from its own index and
+' writes orders to the orders DB; it takes cards through a payment provider and sends
+' receipts by an email service. The stock service owns the catalogue DB and sends
+' reorders to the distributor API. Accounts export reads the orders DB.
+' Not stated: how the search index is refreshed from the catalogue.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+
+title Bookshop systems map (architecture)
+
+package "Shop floor" <<group1>> {
+  rectangle "Till (POS)" as till
+  rectangle "Stock scanner app" as scanner
+}
+package "Online" <<group2>> {
+  rectangle "Web shop" as web
+  rectangle "Search index" as search
+}
+package "Back office" <<group3>> {
+  rectangle "Stock service" as stock
+  rectangle "Accounts export" as accounts
+  database "Catalogue DB" as catalogue
+  database "Orders DB" as orders
+}
+cloud "Card payments" as payments
+cloud "Email service" as email
+cloud "Distributor API" as distributor
+
+till --> stock : sales
+scanner --> stock : shelf counts
+web --> search : queries
+web --> orders : orders
+web ---> payments : checkout
+web --> email : receipts
+stock --> catalogue
+stock --> distributor : reorders
+accounts --> orders : reads
+search ..> catalogue : not stated: refresh
+
+legend right
+  |= Mark |= Meaning |
+  | rounded box | service or app |
+  | cylinder | data store |
+  | cloud | external service |
+  |<#E3F2FD>| shop floor |
+  |<#E8F5E9>| online |
+  |<#FFF3E0>| back office |
+  | dashed line | not stated in the source |
+endlegend
+@enduml

@@ -1,0 +1,69 @@
+@startuml
+' Source (synthetic brief): the bookshop's "sales report is late" runbook. The on-call analyst checks
+' whether the till CSV arrived. If not, they ask the shop manager to re-export it and wait. If it did,
+' they re-run the nightly load in Airflow; the data engineer checks the row counts. If they match, the
+' analyst republishes the report; if not, the data engineer opens an incident and the runbook stops.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+
+title Activity diagram for the "sales report is late" runbook (synthetic)
+
+|On-call analyst|
+start
+:Check the till CSV arrived;
+if (CSV in the landing folder?) then (No)
+  |Shop manager|
+  :Re-export the till CSV;
+  |On-call analyst|
+  :Wait for the file;
+else (Yes)
+endif
+:Re-run the nightly load;
+|Data engineer|
+:Compare row counts;
+if (Counts match?) then (Yes)
+  |On-call analyst|
+  :Republish the sales report;
+  stop
+else (No)
+  |Data engineer|
+  :Open an incident;
+  stop
+endif
+
+legend right
+  |= Mark |= Meaning |
+  | column | one role |
+  | rounded box | step |
+  | hexagon | decision, branches Yes / No |
+  | diamond | branches join again |
+  | circle / ringed dot | start / stop |
+endlegend
+@enduml

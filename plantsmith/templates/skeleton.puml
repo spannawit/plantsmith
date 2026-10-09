@@ -1,0 +1,27 @@
+
+title Replace with the diagram title (what, scope, as-of date)
+
+' Shape vocabulary (STYLE.md rule 2):
+'   rectangle "Step" as s          process, task or step (rounded)
+'   database "Store" as d          data store (cylinder); inside the stage package that writes it
+'   cloud "Service" as c           external system, API or cloud service
+'   hexagon "Check?" as k          check or decision (no diamond in component diagrams)
+'   file "Report" as r             document, report or ticket
+'   package "Group" <<group1>> { } repo, stage, schema or lane (container with a title)
+' Colour = a <<stereotype>> defined once in <style> above; never #colour on an element.
+' Failure point = the element where it happens, filled <<failure>> (STYLE.md rule 10).
+' Detail in nested packages = inside the body: rectangle s [ Step\n..\n//detail line// ] (reference § Layout moves).
+' Thin source: s ..> d   (dashed) plus ONE legend row "dashed line | inferred / not stated".
+
+' Worked legend: keep only the rows this diagram uses (rule 9: every colour is listed).
+legend right
+  |= Mark |= Meaning |
+  | rounded box | step |
+  | cylinder | data store |
+  | cloud | external service |
+  | hexagon | check |
+  |<#E3F2FD>| group1: name its meaning |
+  |<#FADBD8>| failure point |
+  | dashed line | inferred / not stated in the source |
+endlegend
+@enduml

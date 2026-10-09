@@ -1,0 +1,15 @@
+
+title Replace with the timeline title (what, scope, as-of date)
+Project starts 2026-01-05
+[First dated step] starts 2026-01-05 and ends 2026-01-16
+[Dated milestone] happens 2026-01-23
+note bottom
+  Undated step: no date in source
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | bar | dated work, start and end stated |
+  | diamond | dated milestone |
+endlegend
+@endgantt

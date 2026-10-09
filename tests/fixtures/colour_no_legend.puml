@@ -1,0 +1,5 @@
+@startuml
+skinparam linetype ortho
+title T
+rectangle "A" as a #FADBD8
+@enduml

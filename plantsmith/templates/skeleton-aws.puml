@@ -1,0 +1,25 @@
+!include <awslib20/General/Users>
+!include <awslib20/Analytics/Redshift>
+!include <awslib20/Storage/SimpleStorageService>
+
+title Replace with the diagram title (what, scope, as-of date)
+
+Users(users, "Replace: who", "Replace: how they reach it")
+AWSCloudGroup(cloud, "AWS Cloud") {
+  RegionGroup(region, "Replace: region") {
+    SimpleStorageService(raw, "Replace: bucket role", "Amazon S3")
+    Redshift(dw, "Replace: warehouse role", "Amazon Redshift")
+  }
+}
+
+users -down-> dw : Replace: intent (HTTPS)
+raw -down-> dw : Replace: intent (COPY)
+
+legend right
+  |= Mark |= Meaning |
+  | icon | the AWS service named in the source (official icon) |
+  | group frame | AWS Cloud, VPC, AZ, subnet as in the source |
+  | dotted teal frame | AWS Region (the AWS group style keeps its own border) |
+  | dashed line | inferred / not stated in the source |
+endlegend
+@enduml

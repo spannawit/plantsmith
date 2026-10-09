@@ -1,0 +1,22 @@
+!include <azure/Storage/AzureBlobStorage>
+!include <azure/Analytics/AzureSynapseAnalytics>
+
+title Container diagram for <system> on Azure (as-of date)
+
+rectangle "Microsoft Azure" as az <<AzureCloud>> {
+  rectangle "Replace: stage" as stage <<AzureStage>> {
+    AzureBlobStorage(raw, "Replace: storage role", "Azure Blob Storage")
+    AzureSynapseAnalytics(dw, "Replace: warehouse role", "Azure Synapse Analytics")
+  }
+}
+
+raw -down-> dw : Replace: intent (COPY)
+
+legend right
+  |= Mark |= Meaning |
+  | icon | Azure service named in the source (official Azure icon) |
+  | blue frame | Microsoft Azure |
+  | light-blue dashed frame | stage of the platform |
+  | dashed line | inferred / not stated in the source |
+endlegend
+@enduml

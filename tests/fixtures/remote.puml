@@ -1,0 +1,5 @@
+@startuml
+!includeurl https://example.com/x.puml
+title Remote
+rectangle "A" as a
+@enduml

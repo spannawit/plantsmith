@@ -1,0 +1,8 @@
+@startuml
+skinparam linetype ortho
+title T
+rectangle "A label that is far longer than forty characters" as a
+note right of a
+  Notes may hold long detail lines, that is where detail belongs.
+end note
+@enduml

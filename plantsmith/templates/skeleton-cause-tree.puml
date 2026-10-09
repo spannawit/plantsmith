@@ -1,0 +1,50 @@
+@startwbs
+' Incident cause tree (STYLE rule 18): the problem on top, cause categories below it (data,
+' process, tooling, people), each leaf a cause that cites its evidence (ticket, log, query).
+' Fault-tree variant: a gate node's text starts "AND:" or "OR:", styled <<gate>> (a <<AND>> stereotype would not print).
+' Edit below the end marker. Elbow lines by construction; no fishbone diagonals.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+wbsDiagram {
+  .data { BackgroundColor #E3F2FD }
+  .process { BackgroundColor #E8F5E9 }
+  .tooling { BackgroundColor #FFF3E0 }
+  .people { BackgroundColor #F3E5F5 }
+  .failure { BackgroundColor #FADBD8 }
+  .gate { BackgroundColor #FFFFFF; LineThickness 2 }
+}
+</style>
+' house-preamble-end
+
+title Cause tree for <incident> (as-of date)
+
+* Replace: the problem, as observed <<failure>>
+** Data <<data>>
+*** Replace: cause\n//evidence: ticket or log line//
+*** Replace: second cause\n//evidence: query result//
+** Process <<process>>
+*** Replace: cause\n//evidence: runbook step//
+*** Replace: second cause\n//evidence: query result//
+** Tooling <<tooling>>
+*** Replace: cause\n//evidence: alert or query//
+*** Replace: second cause\n//evidence: query result//
+** People <<people>>
+*** Replace: cause\n//evidence: not stated//
+*** Replace: second cause\n//evidence: query result//
+
+legend bottom
+  |= Mark |= Meaning |
+  |<#FADBD8>| the problem |
+  |<#E3F2FD>| data cause |
+  |<#E8F5E9>| process cause |
+  |<#FFF3E0>| tooling cause |
+  |<#F3E5F5>| people cause |
+  | //italic line// | the evidence for the cause |
+endlegend
+@endwbs

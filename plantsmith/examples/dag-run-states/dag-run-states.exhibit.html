@@ -1,0 +1,102 @@
+<doc-mock frame="none" w="453"><template>
+<style>
+#ps-3ff3ee2d g[data-ref]{transition:opacity .15s}
+#ps-3ff3ee2d:hover g[data-ref]{opacity:0.35}
+#ps-3ff3ee2d g[data-ref]:hover{opacity:1}
+#ps-3ff3ee2d.ps-focus g[data-ref]:not(.ps-on){opacity:0.35}
+#ps-3ff3ee2d g[data-ref].ps-on{opacity:1}
+#ps-3ff3ee2d g.link:hover path,#ps-3ff3ee2d g.link.ps-on path{stroke-width:2.5px}
+#ps-3ff3ee2d.ps-nolegend g.legend{display:none}
+#ps-3ff3ee2d.ps-js{cursor:grab;touch-action:none}
+.ps-bar{display:flex;gap:4px;justify-content:flex-end;margin:0 0 4px}
+.ps-bar button{font:12px/1 system-ui,sans-serif;padding:4px 8px;border:1px solid #c9c5bc;border-radius:5px;background:#fff;color:#1b1a18;cursor:pointer}
+</style>
+<div class="ps-bar" data-for="ps-3ff3ee2d"><button type="button" data-act="in" title="Zoom in">+</button><button type="button" data-act="out" title="Zoom out">−</button><button type="button" data-act="reset" title="Reset view">Reset</button><button type="button" data-act="legend" title="Show or hide the legend">Legend</button></div>
+<svg id="ps-3ff3ee2d" style="width:100%;height:auto;display:block;background:#fff" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="STATE" viewBox="0 0 453 571" zoomAndPan="magnify" contentStyleType="text/css"><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="title" data-source-line="36"><text x="15" y="31.609" fill="#000" font-size="16" textLength="421.406" font-weight="700" font-family="Helvetica">State diagram for one nightly sales DAG run (synthetic)</text></g><rect x="274.497" y="132.125" width="50.043" height="40" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="12.5" ry="12.5"/><text x="279.497" y="157.035" fill="#000" font-size="12" textLength="40.043" font-family="Helvetica">queued</text><rect x="231.497" y="232.125" width="50.031" height="40" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="12.5" ry="12.5"/><text x="236.497" y="257.035" fill="#000" font-size="12" textLength="40.031" font-family="Helvetica">running</text><rect x="222.507" y="332.125" width="68.02" height="40" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="12.5" ry="12.5"/><text x="227.507" y="357.035" fill="#000" font-size="12" textLength="13.348" font-family="Helvetica">up</text><text x="240.854" y="357.035" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="244.188" y="357.035" fill="#000" font-size="12" textLength="14.004" font-family="Helvetica">for</text><text x="258.192" y="357.035" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="261.526" y="357.035" fill="#000" font-size="12" textLength="24" font-family="Helvetica">retry</text><rect x="133.847" y="332.125" width="53.348" height="40" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="12.5" ry="12.5"/><text x="138.847" y="357.035" fill="#000" font-size="12" textLength="43.348" font-family="Helvetica">success</text><rect x="274.517" y="432.125" width="50" height="40" fill="#FADBD8" style="stroke:#000;stroke-width:1;" rx="12.5" ry="12.5"/><text x="285.173" y="457.035" fill="#000" font-size="12" textLength="28.688" font-family="Helvetica">failed</text><g class="start_entity" data-qualified-name=".start." id="ent0006" data-source-line="38"><ellipse cx="299.517" cy="62.125" rx="10" ry="10" fill="#FFF" style="stroke:#000;stroke-width:1;"/></g><g class="end_entity" data-qualified-name=".end." id="ent0014" data-source-line="50"><ellipse cx="160.517" cy="452.125" rx="11" ry="11" fill="none" style="stroke:#000;stroke-width:1;"/><ellipse cx="160.517" cy="452.125" rx="6" ry="6" fill="#FFF" style="stroke:#000;stroke-width:1;"/></g><!--link *start* to queued--><g data-ref="link-item-to-item" data-from="item" data-to="item" class="link" data-entity-1="ent0006" data-entity-2="ent0001" id="lnk7" data-source-line="38" data-link-type="dependency"><title>item → item: scheduled at 01:00 (dag-run-states.puml:38)</title><path d="M299.517,72.445 C299.517,86.855 299.517,108.295 299.517,126.745" style="stroke:#000;stroke-width:1;" fill="none" id="*start*-to-queued"/><polygon points="299.517,131.745,303.517,122.745,299.517,126.745,295.517,122.745,299.517,131.745" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="197.517" y="98.552" fill="#000" font-size="12" textLength="54.709" font-family="Helvetica">scheduled</text><text x="252.226" y="98.552" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="255.56" y="98.552" fill="#000" font-size="12" textLength="10.008" font-family="Helvetica">at</text><text x="265.567" y="98.552" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="268.901" y="98.552" fill="#000" font-size="12" textLength="30.029" font-family="Helvetica">01:00</text></g><!--link queued to running--><g data-ref="link-item-to-item-2" data-from="item" data-to="item" class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk8" data-source-line="44" data-link-type="dependency"><title>item → item: worker picks it up (dag-run-states.puml:44)</title><path d="M278.017,172.365 C278.017,189.715 278.017,209.575 278.017,226.915" style="stroke:#000;stroke-width:1;" fill="none" id="queued-to-running"/><polygon points="278.017,231.915,282.017,222.915,278.017,226.915,274.017,222.915,278.017,231.915" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="185.017" y="198.592" fill="#000" font-size="12" textLength="36.006" font-family="Helvetica">worker</text><text x="221.022" y="198.592" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="224.356" y="198.592" fill="#000" font-size="12" textLength="27.34" font-family="Helvetica">picks</text><text x="251.696" y="198.592" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="255.03" y="198.592" fill="#000" font-size="12" textLength="6" font-family="Helvetica">it</text><text x="261.03" y="198.592" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="264.364" y="198.592" fill="#000" font-size="12" textLength="13.348" font-family="Helvetica">up</text></g><!--link running to success--><g data-ref="link-item-to-item-3" data-from="item" data-to="item" class="link" data-entity-1="ent0002" data-entity-2="ent0004" id="lnk9" data-source-line="45" data-link-type="dependency"><title>item → item: every task succeeds (dag-run-states.puml:45)</title><path d="M231.047,252.125 C202.607,252.125 160.517,252.125 160.517,252.125 C160.517,252.125 160.517,297.665 160.517,326.885" style="stroke:#000;stroke-width:1;" fill="none" id="running-to-success"/><polygon points="160.517,331.885,164.517,322.885,160.517,326.885,156.517,322.885,160.517,331.885" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="51.517" y="253.202" fill="#000" font-size="12" textLength="29.344" font-family="Helvetica">every</text><text x="80.86" y="253.202" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="84.194" y="253.202" fill="#000" font-size="12" textLength="22.008" font-family="Helvetica">task</text><text x="106.202" y="253.202" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="109.536" y="253.202" fill="#000" font-size="12" textLength="50.695" font-family="Helvetica">succeeds</text></g><!--link running to retry--><g data-ref="link-item-to-item-4" data-from="item" data-to="item" class="link" data-entity-1="ent0002" data-entity-2="ent0003" id="lnk10" data-source-line="46" data-link-type="dependency"><title>item → item: a task fails (dag-run-states.puml:46)</title><path d="M264.857,272.365 C264.857,289.715 264.857,309.575 264.857,326.915" style="stroke:#000;stroke-width:1;" fill="none" id="running-to-retry"/><polygon points="264.857,331.915,268.857,322.915,264.857,326.915,260.857,322.915,264.857,331.915" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="207.857" y="315.592" fill="#000" font-size="12" font-family="Helvetica">a</text><text x="214.53" y="315.592" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="217.864" y="315.592" fill="#000" font-size="12" textLength="22.008" font-family="Helvetica">task</text><text x="239.872" y="315.592" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="243.206" y="315.592" fill="#000" font-size="12" textLength="21.34" font-family="Helvetica">fails</text></g><!--link retry to running--><g data-ref="link-item-to-item-5" data-from="item" data-to="item" class="link" data-entity-1="ent0003" data-entity-2="ent0002" id="lnk11" data-source-line="47" data-link-type="dependency"><title>item → item: retry (at most 2) (dag-run-states.puml:47)</title><path d="M248.177,331.885 C248.177,314.535 248.177,294.675 248.177,277.335" style="stroke:#000;stroke-width:1;" fill="none" id="retry-to-running"/><polygon points="248.177,272.335,244.177,281.335,248.177,277.335,252.177,281.335,248.177,272.335" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="163.177" y="298.562" fill="#000" font-size="12" textLength="24" font-family="Helvetica">retry</text><text x="187.177" y="298.562" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="190.511" y="298.562" fill="#000" font-size="12" textLength="14.004" font-family="Helvetica">(at</text><text x="204.514" y="298.562" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="207.848" y="298.562" fill="#000" font-size="12" textLength="26.004" font-family="Helvetica">most</text><text x="233.852" y="298.562" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="237.186" y="298.562" fill="#000" font-size="12" textLength="10.67" font-family="Helvetica">2)</text></g><!--link retry to failed--><g data-ref="link-item-to-item-6" data-from="item" data-to="item" class="link" data-entity-1="ent0003" data-entity-2="ent0005" id="lnk12" data-source-line="48" data-link-type="dependency"><title>item → item: second retry fails (dag-run-states.puml:48)</title><path d="M282.517,372.365 C282.517,389.715 282.517,409.575 282.517,426.915" style="stroke:#000;stroke-width:1;" fill="none" id="retry-to-failed"/><polygon points="282.517,431.915,286.517,422.915,282.517,426.915,278.517,422.915,282.517,431.915" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="191.517" y="398.602" fill="#000" font-size="12" textLength="38.695" font-family="Helvetica">second</text><text x="230.212" y="398.602" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="233.546" y="398.602" fill="#000" font-size="12" textLength="24" font-family="Helvetica">retry</text><text x="257.546" y="398.602" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="260.88" y="398.602" fill="#000" font-size="12" textLength="21.34" font-family="Helvetica">fails</text></g><!--link failed to queued--><g data-ref="link-item-to-item-7" data-from="item" data-to="item" class="link" data-entity-1="ent0005" data-entity-2="ent0001" id="lnk13" data-source-line="49" data-link-type="dependency"><title>item → item: operator clears it (dag-run-states.puml:49)</title><path d="M307.517,431.975 C307.517,377.455 307.517,232.455 307.517,177.585" style="stroke:#000;stroke-width:1;" fill="none" id="failed-to-queued"/><polygon points="307.517,172.585,303.517,181.585,307.517,177.585,311.517,181.585,307.517,172.585" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="308.517" y="298.732" fill="#000" font-size="12" textLength="44.695" font-family="Helvetica">operator</text><text x="353.212" y="298.732" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="356.546" y="298.732" fill="#000" font-size="12" textLength="32.01" font-family="Helvetica">clears</text><text x="388.556" y="298.732" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="391.89" y="298.732" fill="#000" font-size="12" textLength="6" font-family="Helvetica">it</text></g><!--link success to *end*--><g data-ref="link-item-to-item-8" data-from="item" data-to="item" class="link" data-entity-1="ent0004" data-entity-2="ent0014" id="lnk15" data-source-line="50" data-link-type="dependency"><title>item → item: link-item-to-item-8 (dag-run-states.puml:50)</title><path d="M160.517,372.365 C160.517,392.905 160.517,418.995 160.517,435.645" style="stroke:#000;stroke-width:1;" fill="none" id="success-to-*end*"/><polygon points="160.517,440.645,164.517,431.645,160.517,435.645,156.517,431.645,160.517,440.645" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="legend" data-source-line="52"><rect x="207.126" y="485.125" width="194.764" height="74.375" fill="none" style="stroke:#999;stroke-width:1;" rx="7.5" ry="7.5"/><text x="215.46" y="504.582" fill="#000" font-size="12" textLength="28.014" font-weight="700" font-family="Helvetica">Mark</text><text x="313.505" y="504.582" fill="#000" font-size="12" textLength="48.668" font-weight="700" font-family="Helvetica">Meaning</text><text x="215.46" y="519.676" fill="#000" font-size="12" textLength="66.721" font-family="Helvetica">rounded box</text><text x="313.505" y="519.676" fill="#000" font-size="12" textLength="80.051" font-family="Helvetica">state of the run</text><rect x="212.126" y="522.313" width="98.045" height="15.094" fill="#FADBD8" style="stroke:none;"/><text x="212.126" y="534.77" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="313.505" y="534.77" fill="#000" font-size="12" textLength="62.033" font-family="Helvetica">failure state</text><text x="215.46" y="549.863" fill="#000" font-size="12" textLength="91.377" font-family="Helvetica">circle / ringed dot</text><text x="313.505" y="549.863" fill="#000" font-size="12" textLength="77.355" font-family="Helvetica">first / last state</text><line x1="212.126" y1="492.125" x2="396.89" y2="492.125" style="stroke:#000;stroke-width:1;"/><line x1="212.126" y1="507.219" x2="396.89" y2="507.219" style="stroke:#000;stroke-width:1;"/><line x1="212.126" y1="522.313" x2="396.89" y2="522.313" style="stroke:#000;stroke-width:1;"/><line x1="212.126" y1="537.406" x2="396.89" y2="537.406" style="stroke:#000;stroke-width:1;"/><line x1="212.126" y1="552.5" x2="396.89" y2="552.5" style="stroke:#000;stroke-width:1;"/><line x1="212.126" y1="492.125" x2="212.126" y2="552.5" style="stroke:#000;stroke-width:1;"/><line x1="310.171" y1="492.125" x2="310.171" y2="552.5" style="stroke:#000;stroke-width:1;"/><line x1="396.89" y1="492.125" x2="396.89" y2="552.5" style="stroke:#000;stroke-width:1;"/></g></g></svg>
+<script>
+(function () {
+  var ID = "ps-3ff3ee2d", WHEEL_NEEDS_MODIFIER = true;
+  function find() {
+    var s = document.getElementById(ID); if (s && !s.__ps) return s;
+    var all = document.querySelectorAll("*");
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].shadowRoot; if (!r) continue;
+      var t = r.getElementById(ID); if (t && !t.__ps) return t;
+    }
+    return null;
+  }
+  var svg = find(); if (!svg) return; svg.__ps = true;
+  svg.classList.add("ps-js");
+  var root = svg.getRootNode();
+  var vb0 = svg.getAttribute("viewBox").split(/[\s,]+/).map(Number), vb = vb0.slice();
+  svg.__psVB0 = vb0.join(" ");
+  function setVB() { svg.setAttribute("viewBox", vb.join(" ")); }
+  var groups = svg.querySelectorAll("g[data-ref]"), links = svg.querySelectorAll("g[data-from]");
+  function related(ref) {
+    var on = {}; on[ref] = 1;
+    for (var i = 0; i < links.length; i++) {
+      var l = links[i];
+      if (l.getAttribute("data-from") === ref || l.getAttribute("data-to") === ref || l.getAttribute("data-ref") === ref) {
+        on[l.getAttribute("data-ref")] = 1; on[l.getAttribute("data-from")] = 1; on[l.getAttribute("data-to")] = 1;
+      }
+    }
+    return on;
+  }
+  var sticky = null;
+  function focus(ref) {
+    var on = ref ? related(ref) : {};
+    svg.classList.toggle("ps-focus", !!ref);
+    for (var i = 0; i < groups.length; i++) groups[i].classList.toggle("ps-on", !!on[groups[i].getAttribute("data-ref")]);
+  }
+  function refAt(e) { var g = e.target.closest ? e.target.closest("g[data-ref]") : null; return g ? g.getAttribute("data-ref") : null; }
+  svg.addEventListener("mouseover", function (e) { if (!sticky) focus(refAt(e)); });
+  svg.addEventListener("mouseleave", function () { if (!sticky) focus(null); });
+  function zoom(f, cx, cy) {
+    var r = svg.getBoundingClientRect(); if (!r.width) return;
+    var px = cx === undefined ? 0.5 : (cx - r.left) / r.width, py = cy === undefined ? 0.5 : (cy - r.top) / r.height;
+    var x = vb[0] + px * vb[2], y = vb[1] + py * vb[3];
+    vb[2] *= f; vb[3] *= f; vb[0] = x - px * vb[2]; vb[1] = y - py * vb[3]; setVB();
+  }
+  function reset() { vb = vb0.slice(); setVB(); sticky = null; focus(null); }
+  var ptrs = {}, drag = null, moved = 0, pinch = 0;
+  svg.addEventListener("pointerdown", function (e) {
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY }; moved = 0;
+    if (Object.keys(ptrs).length === 1) drag = { x: e.clientX, y: e.clientY, vb: vb.slice() };
+    svg.setPointerCapture(e.pointerId);
+  });
+  svg.addEventListener("pointermove", function (e) {
+    if (!ptrs[e.pointerId]) return;
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
+    var ids = Object.keys(ptrs);
+    if (ids.length === 2) {
+      var a = ptrs[ids[0]], b = ptrs[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinch) zoom(pinch / d, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      pinch = d; moved = 99; drag = null; return;
+    }
+    if (!drag) return;
+    var r = svg.getBoundingClientRect(), k = vb[2] / r.width;
+    moved = Math.max(moved, Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y));
+    vb[0] = drag.vb[0] - (e.clientX - drag.x) * k; vb[1] = drag.vb[1] - (e.clientY - drag.y) * k; setVB();
+  });
+  function up(e) { delete ptrs[e.pointerId]; if (Object.keys(ptrs).length < 2) pinch = 0; if (!Object.keys(ptrs).length) drag = null; }
+  svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
+  svg.addEventListener("click", function (e) {
+    if (moved > 3) { e.stopPropagation(); e.preventDefault(); return; }
+    var ref = refAt(e); sticky = ref && ref !== sticky ? ref : null; focus(sticky);
+  });
+  svg.addEventListener("dblclick", function (e) { e.preventDefault(); reset(); });
+  svg.addEventListener("wheel", function (e) {
+    if (WHEEL_NEEDS_MODIFIER && !(e.ctrlKey || e.metaKey)) return;
+    e.preventDefault(); zoom(e.deltaY < 0 ? 0.9 : 1.1, e.clientX, e.clientY);
+  }, { passive: false });
+  var bar = root.querySelector ? root.querySelector('.ps-bar[data-for="' + ID + '"]') : null;
+  if (bar) bar.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return; e.stopPropagation();
+    var act = b.getAttribute("data-act");
+    if (act === "in") zoom(0.8); else if (act === "out") zoom(1.25); else if (act === "reset") reset();
+    else if (act === "legend") svg.classList.toggle("ps-nolegend");
+  });
+  svg.__psReset = reset;
+})();
+</script>
+</template></doc-mock>

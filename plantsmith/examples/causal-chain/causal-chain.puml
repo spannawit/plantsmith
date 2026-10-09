@@ -1,0 +1,73 @@
+@startuml
+' Source (synthetic brief): The Saturday signing was announced on local radio on
+' Thursday. Saturday walk-in traffic was three times normal. The till syncs stock
+' counts to the web shop overnight only, so the web shop kept selling the signed
+' edition after the shelf ran out: 40 copies oversold, refunded on Monday.
+' Not stated: whether the distributor could have restocked in time.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+
+title Why the signed edition oversold (causal chain)
+
+rectangle "Radio announces the signing" as radio
+rectangle "Walk-in traffic 3x normal" as traffic
+rectangle "Shelf stock runs out" as shelf
+hexagon "Web stock in sync?" as sync
+rectangle "Web shop sells on stale count" as stale <<failure>>
+rectangle "40 copies oversold" as oversold <<failure>>
+file "Refund log (Monday)" as refunds
+cloud "Distributor restock" as distributor
+
+note right of sync
+  Till pushes stock counts to the
+  web shop overnight only
+end note
+note right of distributor
+  Could it restock in time?
+end note
+
+radio --> traffic : Thursday
+traffic --> shelf : Saturday
+shelf --> sync
+sync --> stale : no, overnight sync
+stale --> oversold
+oversold --> refunds
+distributor ...> shelf : not stated
+
+legend right
+  |= Mark |= Meaning |
+  | rounded box | event |
+  | hexagon | check |
+  | cloud | external service |
+  | note shape | document |
+  |<#FADBD8>| failure |
+  | dashed line | not stated in the source |
+endlegend
+@enduml

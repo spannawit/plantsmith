@@ -1,0 +1,33 @@
+@startuml
+' House preamble for every @startuml diagram (component, deployment, sequence, entity, activity).
+' Start a diagram as this file followed by templates/skeleton.puml; edit only below the end
+' marker, so the diagram stays one self-contained file that renders anywhere.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end

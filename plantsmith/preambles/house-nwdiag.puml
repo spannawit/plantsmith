@@ -1,0 +1,15 @@
+@startnwdiag
+' House preamble for subnet and address maps (nwdiag). Start from this file, edit below the
+' end marker. nwdiag draws each network as a horizontal bus and each host as a box hanging from
+' the buses it joins: its lines are straight vertical drops, not routed, so linetype does not
+' apply. Write only the addresses and networks the sources state; leave the rest out.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+</style>
+' house-preamble-end

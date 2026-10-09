@@ -1,0 +1,82 @@
+@startuml
+' Source (synthetic brief): the bookshop on Azure. The till system (in-store, hosting not stated)
+' uploads a daily CSV to a Blob Storage landing container; an Azure Function exports new web orders
+' from the Orders DB (Azure SQL) as JSON into the same container; Data Factory loads the container
+' into the Synapse sales warehouse every night. Secrets sit in Key Vault.
+' Not stated: whether Data Factory reads its credentials from Key Vault.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+skinparam nodesep 60
+skinparam ranksep 80
+hide stereotype
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+.AzureCloud { LineColor #0078D4; LineThickness 2; FontColor #0078D4; FontStyle bold; HorizontalAlignment left }
+.AzureStage { LineColor #50E6FF; LineStyle 6; LineThickness 2; BackgroundColor #F2FAFF; HorizontalAlignment left }
+.ZoneProcessing { BackgroundColor #E1F5FE; LineColor #E1F5FE; HorizontalAlignment left }
+.ZoneStorage { BackgroundColor #FFF8E1; LineColor #FFF8E1; HorizontalAlignment left }
+.ZoneAnalytics { BackgroundColor #F1F8E9; LineColor #F1F8E9; HorizontalAlignment left }
+.ZoneServing { BackgroundColor #F3E5F5; LineColor #F3E5F5; HorizontalAlignment left }
+.ZoneOnPrem { BackgroundColor #EFEBE9; LineColor #EFEBE9; HorizontalAlignment left }
+.ZoneExternal { BackgroundColor #FFEBEE; LineColor #FFEBEE; HorizontalAlignment left }
+.LogicalFrame { LineColor #4284F3; LineStyle 6; LineThickness 2; BackgroundColor transparent; FontColor #4284F3; HorizontalAlignment left }
+.NotStated { LineColor #999999; LineStyle 2; FontColor #666666; HorizontalAlignment left }
+</style>
+!include <azure/AzureCommon>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+!include <azure/Storage/AzureBlobStorage>
+!include <azure/Databases/AzureDataFactory>
+!include <azure/Analytics/AzureSynapseAnalytics>
+!include <azure/Databases/AzureSqlDatabase>
+!include <azure/Compute/AzureFunction>
+!include <azure/Security/AzureKeyVault>
+
+title Container diagram for the bookshop sales data platform on Azure (synthetic)
+
+rectangle "Till system\n(in-store, hosting not stated)" as till <<NotStated>>
+rectangle "Microsoft Azure" as az <<AzureCloud>> {
+  rectangle "Ingest" as g_in <<AzureStage>> {
+    AzureFunction(web_export, "Web orders export", "Azure Functions")
+    AzureBlobStorage(landing, "Landing container", "Azure Blob Storage")
+  }
+  rectangle "Warehouse" as g_wh <<AzureStage>> {
+    AzureDataFactory(adf, "Nightly load", "Azure Data Factory")
+    AzureSynapseAnalytics(dw, "Sales warehouse", "Azure Synapse Analytics")
+    AzureKeyVault(kv, "Secrets", "Azure Key Vault")
+  }
+  rectangle "Shop" as g_shop <<AzureStage>> {
+    AzureSqlDatabase(orders, "Orders DB", "Azure SQL Database")
+  }
+}
+
+till ---> landing : uploads daily CSV (HTTPS)
+orders -down-> web_export : reads orders (SQL)
+skinparam nodesep 100
+web_export -down-> landing : writes JSON\n(Blob API)
+landing -down-> adf : triggers load (event)
+adf -down-> dw : copies rows\n(PolyBase)
+adf .down.> kv : reads secrets\n(not stated)
+
+legend bottom
+  |= Mark |= Meaning |
+  | icon | Azure service named in the source (official Azure icon) |
+  | blue frame | Microsoft Azure |
+  | light-blue dashed frame | stage of the platform |
+  | grey dotted frame | hosting not stated |
+  | dashed line | inferred / not stated in the source |
+endlegend
+@enduml

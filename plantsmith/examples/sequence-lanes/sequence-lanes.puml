@@ -1,0 +1,79 @@
+@startuml
+' Source (synthetic brief): A customer asks the counter for an out-of-print title.
+' Staff search the order system, which finds it out of stock. Staff place a special
+' order with the distributor, who replies with a 10-day ETA. Staff take a 20% deposit;
+' the same day the order system saves the order and emails a confirmation. When the
+' book arrives, staff send a pickup notice.
+' Not stated: what happens to the deposit if the customer cancels.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+
+title Special order for an out-of-print book (sequence)
+autonumber "<b>[00]"
+
+actor "Customer" as customer
+box "Shop"
+  participant "Counter staff" as staff
+  participant "Order system" as system
+  database "Orders DB" as db
+end box
+box "Outside services"
+  participant "Distributor" as distributor
+  participant "Email service" as email
+end box
+
+customer -> staff : asks for the title
+staff -> system : search catalogue
+system -> db : look up ISBN
+db --> system : out of stock
+staff -> distributor : place special order
+distributor --> staff : ETA 10 days
+staff -> customer : take 20% deposit
+note right of customer
+  not stated: deposit refund
+  if the customer cancels
+end note
+group same day
+  system -> db : save order and deposit
+  system -> email : send confirmation
+end
+== about 10 days later ==
+distributor -> staff : book arrives
+staff -> email : send pickup notice
+
+legend right
+  |= Mark |= Meaning |
+  | solid arrow | request or action |
+  | dashed arrow | reply |
+  | cylinder | data store |
+  | box | lane: shop or outside |
+  | "not stated" note | source gap |
+endlegend
+@enduml

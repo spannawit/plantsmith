@@ -1,0 +1,22 @@
+!include <gcp/Storage/Cloud_Storage>
+!include <gcp/Data_Analytics/BigQuery>
+
+title Container diagram for <system> on Google Cloud (as-of date)
+
+rectangle "Google Cloud" as gc <<GcpCloud>> {
+  rectangle "Replace: stage" as stage <<GcpStage>> {
+    Cloud_Storage(raw, "Replace: bucket role", "Cloud Storage")
+    BigQuery(dw, "Replace: warehouse role", "BigQuery")
+  }
+}
+
+raw -down-> dw : Replace: intent (load job)
+
+legend right
+  |= Mark |= Meaning |
+  | icon | Google Cloud service named in the source (official GCP icon) |
+  | blue frame | Google Cloud |
+  | grey dashed frame | stage of the platform |
+  | dashed line | inferred / not stated in the source |
+endlegend
+@enduml

@@ -1,0 +1,86 @@
+@startuml
+' Source (synthetic brief): the bookshop's daily sales table. The till export (external) lands in
+' raw.till_sales; process 1 "Clean" copies sale_id and isbn and converts price_text to a number;
+' process 2 "Aggregate" builds mart.daily_sales: sale_date from sold_at, units as a count of sale_id,
+' revenue as the sum of price. Not stated: how late rows are handled.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+allowmixing
+skinparam nodesep 70
+skinparam ranksep 70
+
+title Data flow diagram for mart.daily_sales, column lineage (synthetic)
+
+actor "Till export" as till
+rectangle "1. Clean" as clean
+rectangle "2. Aggregate" as agg
+
+entity "raw.till_sales" as raw {
+  sale_id : text
+  isbn : text
+  sold_at : text
+  price_text : text
+}
+entity "stage.sales" as stage {
+  sale_id : bigint
+  {field} isbn : char(13)
+  sold_at : timestamp
+  {field} price : numeric(8,2)
+}
+entity "mart.daily_sales" as mart {
+  sale_date : date
+  units : int
+  {field} revenue : numeric(12,2)
+}
+
+till -down-> raw : drops CSV (SFTP)
+raw -down-> clean : reads (SQL)
+clean -down-> stage : writes (SQL)
+stage -down-> agg : reads (SQL)
+agg -down-> mart : writes (SQL)
+note right of mart
+  **Column lineage**
+  |= target |= source |= rule |
+  | stage.sale_id | raw.sale_id | copied |
+  | stage.price | raw.price_text | cast to numeric |
+  | mart.sale_date | stage.sold_at | date of |
+  | mart.units | stage.sale_id | count |
+  | mart.revenue | stage.price | sum |
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | actor | external source |
+  | rounded box | process, numbered as in the source |
+  | table | table whose columns the flow names |
+  | lineage table | each target column, its source column and the rule |
+  | table line | the process reads or writes the whole table |
+endlegend
+@enduml

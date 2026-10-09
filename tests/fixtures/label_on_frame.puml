@@ -1,0 +1,21 @@
+@startuml
+' The label runs 3 px across the frame's left border, so render.py prints a WARN naming «group1»
+' (a character outside cp874): the render must still exit 0 on such a console.
+' house-preamble-begin
+!theme plain
+skinparam linetype ortho
+skinparam legendBackgroundColor transparent
+<style>
+.group1 { BackgroundColor #E3F2FD }
+</style>
+' house-preamble-end
+title Clean fixture
+package "Shop" <<group1>> {
+  rectangle "Take order" as a
+  database "Orders DB" as b
+}
+a ..> b : not stated
+legend right
+  |<#E3F2FD>| shop |
+endlegend
+@enduml

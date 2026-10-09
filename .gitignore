@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+scratch-probe/
+tests/out/
+.DS_Store

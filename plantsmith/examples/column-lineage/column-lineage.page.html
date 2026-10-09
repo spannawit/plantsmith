@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data flow diagram for mart.daily_sales, column lineage (synthetic)</title>
+<style>
+:root{--bg:#f6f5f2;--fg:#1b1a18;--muted:#6b675e;--line:#d9d6cf}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17161a;--fg:#e6e3dc;--muted:#a19d94;--line:#3a3840}}
+:root[data-theme="dark"]{--bg:#17161a;--fg:#e6e3dc;--muted:#a19d94;--line:#3a3840}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 16px}
+header h1{font-size:16px;margin:0 auto 0 0}
+header button{font:13px/1 system-ui,sans-serif;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--fg);cursor:pointer}
+.card{margin:0 16px 16px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;height:calc(100vh - 110px);min-height:320px}
+.card .ps-bar{display:none}
+.card svg{width:100%;height:100%;display:block}
+footer{margin:0 16px 16px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<header><h1>Data flow diagram for mart.daily_sales, column lineage (synthetic)</h1>
+<button type="button" data-act="in" title="Zoom in">+</button>
+<button type="button" data-act="out" title="Zoom out">&minus;</button>
+<button type="button" data-act="reset" title="Reset view">Reset</button>
+<button type="button" data-act="legend" title="Show or hide the legend">Legend</button>
+<button type="button" id="ps-theme" title="Light or dark page">Theme</button>
+<button type="button" id="ps-png" title="Download the diagram as PNG">PNG</button>
+</header>
+<main class="card">
+<style>
+#ps-56b755d5 g[data-ref]{transition:opacity .15s}
+#ps-56b755d5:hover g[data-ref]{opacity:0.35}
+#ps-56b755d5 g[data-ref]:hover{opacity:1}
+#ps-56b755d5 g[data-ref="till-export"]:hover ~ g[data-from="till-export"],#ps-56b755d5 g[data-ref="till-export"]:hover ~ g[data-to="till-export"]{opacity:1}
+#ps-56b755d5 g[data-ref="1-clean"]:hover ~ g[data-from="1-clean"],#ps-56b755d5 g[data-ref="1-clean"]:hover ~ g[data-to="1-clean"]{opacity:1}
+#ps-56b755d5 g[data-ref="2-aggregate"]:hover ~ g[data-from="2-aggregate"],#ps-56b755d5 g[data-ref="2-aggregate"]:hover ~ g[data-to="2-aggregate"]{opacity:1}
+#ps-56b755d5 g[data-ref="raw-till-sales-sale-id-text-isbn-text"]:hover ~ g[data-from="raw-till-sales-sale-id-text-isbn-text"],#ps-56b755d5 g[data-ref="raw-till-sales-sale-id-text-isbn-text"]:hover ~ g[data-to="raw-till-sales-sale-id-text-isbn-text"]{opacity:1}
+#ps-56b755d5 g[data-ref="stage-sales-sale-id-bigint-isbn-char-13"]:hover ~ g[data-from="stage-sales-sale-id-bigint-isbn-char-13"],#ps-56b755d5 g[data-ref="stage-sales-sale-id-bigint-isbn-char-13"]:hover ~ g[data-to="stage-sales-sale-id-bigint-isbn-char-13"]{opacity:1}
+#ps-56b755d5 g[data-ref="mart-daily-sales-sale-date-date-units"]:hover ~ g[data-from="mart-daily-sales-sale-date-date-units"],#ps-56b755d5 g[data-ref="mart-daily-sales-sale-date-date-units"]:hover ~ g[data-to="mart-daily-sales-sale-date-date-units"]{opacity:1}
+#ps-56b755d5 g[data-ref="column-lineage-target-source-rule-stage"]:hover ~ g[data-from="column-lineage-target-source-rule-stage"],#ps-56b755d5 g[data-ref="column-lineage-target-source-rule-stage"]:hover ~ g[data-to="column-lineage-target-source-rule-stage"]{opacity:1}
+#ps-56b755d5.ps-focus g[data-ref]:not(.ps-on){opacity:0.35}
+#ps-56b755d5 g[data-ref].ps-on{opacity:1}
+#ps-56b755d5 g.link:hover path,#ps-56b755d5 g.link.ps-on path{stroke-width:2.5px}
+#ps-56b755d5.ps-nolegend g.legend{display:none}
+#ps-56b755d5.ps-js{cursor:grab;touch-action:none}
+.ps-bar{display:flex;gap:4px;justify-content:flex-end;margin:0 0 4px}
+.ps-bar button{font:12px/1 system-ui,sans-serif;padding:4px 8px;border:1px solid #c9c5bc;border-radius:5px;background:#fff;color:#1b1a18;cursor:pointer}
+</style>
+<div class="ps-bar" data-for="ps-56b755d5"><button type="button" data-act="in" title="Zoom in">+</button><button type="button" data-act="out" title="Zoom out">−</button><button type="button" data-act="reset" title="Reset view">Reset</button><button type="button" data-act="legend" title="Show or hide the legend">Legend</button></div>
+<svg id="ps-56b755d5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" viewBox="0 0 544 1000" zoomAndPan="magnify" contentStyleType="text/css"><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="title" data-source-line="38"><text x="19.485" y="31.609" fill="#000" font-size="16" textLength="503.25" font-weight="700" font-family="Helvetica">Data flow diagram for mart.daily_sales, column lineage (synthetic)</text></g><!--entity till--><g data-ref="till-export" class="entity" data-qualified-name="till" id="ent0001" data-source-line="40"><title>Till export (column-lineage.puml:40)</title><ellipse cx="112.997" cy="60.125" rx="8" ry="8" fill="#FFF" style="stroke:#000;stroke-width:1;"/><path d="M112.997,68.125 L112.997,95.125 M99.997,76.125 L125.997,76.125 M112.997,95.125 L99.997,110.125 M112.997,95.125 L125.997,110.125" style="stroke:#000;stroke-width:1;" fill="none"/><text x="86.99" y="124.582" fill="#000" font-size="12" textLength="15.328" font-family="Helvetica">Till</text><text x="102.318" y="124.582" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="105.652" y="124.582" fill="#000" font-size="12" textLength="33.352" font-family="Helvetica">export</text></g><!--entity clean--><g data-ref="1-clean" class="entity" data-qualified-name="clean" id="ent0002" data-source-line="41"><title>1. Clean (column-lineage.puml:41)</title><rect x="80.65" y="368.685" width="64.695" height="35.094" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="7" ry="7"/><text x="90.65" y="391.142" fill="#000" font-size="12" textLength="10.008" font-family="Helvetica">1.</text><text x="100.658" y="391.142" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="103.992" y="391.142" fill="#000" font-size="12" textLength="31.354" font-family="Helvetica">Clean</text></g><!--entity agg--><g data-ref="2-aggregate" class="entity" data-qualified-name="agg" id="ent0003" data-source-line="42"><title>2. Aggregate (column-lineage.puml:42)</title><rect x="68.64" y="645.245" width="88.719" height="35.094" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="7" ry="7"/><text x="78.64" y="667.702" fill="#000" font-size="12" textLength="10.008" font-family="Helvetica">2.</text><text x="88.648" y="667.702" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="91.982" y="667.702" fill="#000" font-size="12" textLength="55.377" font-family="Helvetica">Aggregate</text></g><!--class raw--><g data-ref="raw-till-sales-sale-id-text-isbn-text" class="entity" data-qualified-name="raw" id="ent0004" data-source-line="44"><title>raw.till_sales sale_id : text isbn : text sold_at : text price_text : text (column-lineage.puml:44)</title><rect x="66.32" y="197.215" width="93.369" height="101.469" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="2.5" ry="2.5"/><text x="78.66" y="214.672" fill="#000" font-size="12" textLength="68.689" font-family="Helvetica">raw.till_sales</text><line x1="67.32" y1="222.309" x2="158.689" y2="222.309" style="stroke:#000;stroke-width:1;"/><text x="72.32" y="238.766" fill="#000" font-size="12" textLength="38.027" font-family="Helvetica">sale_id</text><text x="110.347" y="238.766" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="113.681" y="238.766" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="117.015" y="238.766" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="120.349" y="238.766" fill="#000" font-size="12" textLength="19.342" font-family="Helvetica">text</text><text x="72.32" y="253.86" fill="#000" font-size="12" textLength="22.014" font-family="Helvetica">isbn</text><text x="94.334" y="253.86" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="97.668" y="253.86" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="101.002" y="253.86" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="104.336" y="253.86" fill="#000" font-size="12" textLength="19.342" font-family="Helvetica">text</text><text x="72.32" y="268.953" fill="#000" font-size="12" textLength="38.695" font-family="Helvetica">sold_at</text><text x="111.015" y="268.953" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="114.349" y="268.953" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="117.683" y="268.953" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="121.017" y="268.953" fill="#000" font-size="12" textLength="19.342" font-family="Helvetica">text</text><text x="72.32" y="284.047" fill="#000" font-size="12" textLength="52.025" font-family="Helvetica">price_text</text><text x="124.345" y="284.047" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="127.679" y="284.047" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="131.013" y="284.047" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="134.347" y="284.047" fill="#000" font-size="12" textLength="19.342" font-family="Helvetica">text</text><line x1="67.32" y1="290.684" x2="158.689" y2="290.684" style="stroke:#000;stroke-width:1;"/></g><!--class stage--><g data-ref="stage-sales-sale-id-bigint-isbn-char-13" class="entity" data-qualified-name="stage" id="ent0005" data-source-line="50"><title>stage.sales sale_id : bigint isbn : char(13) sold_at : timestamp price : numeric(8,2) (column-lineage.puml:50)</title><rect x="54.98" y="473.775" width="116.045" height="101.469" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="2.5" ry="2.5"/><text x="82.651" y="491.232" fill="#000" font-size="12" textLength="60.703" font-family="Helvetica">stage.sales</text><line x1="55.98" y1="498.869" x2="170.025" y2="498.869" style="stroke:#000;stroke-width:1;"/><text x="60.98" y="515.326" fill="#000" font-size="12" textLength="38.027" font-family="Helvetica">sale_id</text><text x="99.007" y="515.326" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="102.341" y="515.326" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="105.675" y="515.326" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="109.009" y="515.326" fill="#000" font-size="12" textLength="28.688" font-family="Helvetica">bigint</text><text x="60.98" y="530.42" fill="#000" font-size="12" textLength="22.014" font-family="Helvetica">isbn</text><text x="82.994" y="530.42" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="86.328" y="530.42" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="89.662" y="530.42" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="92.996" y="530.42" fill="#000" font-size="12" textLength="44.684" font-family="Helvetica">char(13)</text><text x="60.98" y="545.513" fill="#000" font-size="12" textLength="38.695" font-family="Helvetica">sold_at</text><text x="99.675" y="545.513" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="103.009" y="545.513" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="106.343" y="545.513" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="109.677" y="545.513" fill="#000" font-size="12" textLength="55.348" font-family="Helvetica">timestamp</text><text x="60.98" y="560.607" fill="#000" font-size="12" textLength="26.01" font-family="Helvetica">price</text><text x="86.99" y="560.607" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="90.324" y="560.607" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="93.658" y="560.607" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="96.992" y="560.607" fill="#000" font-size="12" textLength="67.354" font-family="Helvetica">numeric(8,2)</text><line x1="55.98" y1="567.244" x2="170.025" y2="567.244" style="stroke:#000;stroke-width:1;"/></g><!--class mart--><g data-ref="mart-daily-sales-sale-date-date-units" class="entity" data-qualified-name="mart" id="ent0006" data-source-line="56"><title>mart.daily_sales sale_date : date units : int revenue : numeric(12,2) (column-lineage.puml:56)</title><rect x="43.3" y="766.975" width="139.395" height="86.375" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="2.5" ry="2.5"/><text x="69.647" y="784.432" fill="#000" font-size="12" textLength="86.701" font-family="Helvetica">mart.daily_sales</text><line x1="44.3" y1="792.069" x2="181.695" y2="792.069" style="stroke:#000;stroke-width:1;"/><text x="49.3" y="808.526" fill="#000" font-size="12" textLength="52.043" font-family="Helvetica">sale_date</text><text x="101.343" y="808.526" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="104.677" y="808.526" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="108.011" y="808.526" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="111.345" y="808.526" fill="#000" font-size="12" textLength="23.355" font-family="Helvetica">date</text><text x="49.3" y="823.62" fill="#000" font-size="12" textLength="25.348" font-family="Helvetica">units</text><text x="74.648" y="823.62" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="77.982" y="823.62" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="81.316" y="823.62" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="84.65" y="823.62" fill="#000" font-size="12" textLength="12.674" font-family="Helvetica">int</text><text x="49.3" y="838.713" fill="#000" font-size="12" textLength="43.365" font-family="Helvetica">revenue</text><text x="92.665" y="838.713" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="95.999" y="838.713" fill="#000" font-size="12" font-family="Helvetica">:</text><text x="99.333" y="838.713" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="102.667" y="838.713" fill="#000" font-size="12" textLength="74.027" font-family="Helvetica">numeric(12,2)</text><line x1="44.3" y1="845.35" x2="181.695" y2="845.35" style="stroke:#000;stroke-width:1;"/></g><g data-ref="column-lineage-target-source-rule-stage" class="entity" data-qualified-name="GMN12" id="ent0013" data-source-line="68"><title>Column lineage target source rule stage.sale_id raw.sale_id copied stage.price raw.price_text cast to numeric mart.sale_date stage.sold_at date of mart.units stage.sale_id count mart.revenue stage.price sum (column-lineage.puml:68)</title><path d="M252.78,750.335 L252.78,805.995 L183.15,809.995 L252.78,813.995 L252.78,869.991 A0,0 0 0 0 252.78,869.991 L529.219,869.991 A0,0 0 0 0 529.219,869.991 L529.219,760.335 L519.219,750.335 L252.78,750.335 A0,0 0 0 0 252.78,750.335" style="stroke:#000;stroke-width:1;" fill="#FFF"/><path d="M519.219,750.335 L519.219,760.335 L529.219,760.335 L519.219,750.335" style="stroke:#000;stroke-width:1;" fill="#FFF"/><text x="258.78" y="767.792" fill="#000" font-size="12" textLength="44.66" font-weight="700" font-family="Helvetica">Column</text><text x="303.44" y="767.792" fill="#000" font-size="12" font-weight="700" font-family="Helvetica"> </text><text x="306.774" y="767.792" fill="#000" font-size="12" textLength="41.35" font-weight="700" font-family="Helvetica">lineage</text><text x="262.114" y="784.886" fill="#000" font-size="12" textLength="33.34" font-weight="700" font-family="Helvetica">target</text><text x="348.159" y="784.886" fill="#000" font-size="12" textLength="39.352" font-weight="700" font-family="Helvetica">source</text><text x="429.522" y="784.886" fill="#000" font-size="12" textLength="22.008" font-weight="700" font-family="Helvetica">rule</text><text x="262.114" y="799.98" fill="#000" font-size="12" textLength="70.717" font-family="Helvetica">stage.sale_id</text><text x="348.159" y="799.98" fill="#000" font-size="12" textLength="60.697" font-family="Helvetica">raw.sale_id</text><text x="429.522" y="799.98" fill="#000" font-size="12" textLength="35.361" font-family="Helvetica">copied</text><text x="262.114" y="815.073" fill="#000" font-size="12" textLength="58.699" font-family="Helvetica">stage.price</text><text x="348.159" y="815.073" fill="#000" font-size="12" textLength="74.695" font-family="Helvetica">raw.price_text</text><text x="429.522" y="815.073" fill="#000" font-size="12" textLength="81.363" font-family="Helvetica">cast to numeric</text><text x="262.114" y="830.167" fill="#000" font-size="12" textLength="79.377" font-family="Helvetica">mart.sale_date</text><text x="348.159" y="830.167" fill="#000" font-size="12" textLength="71.385" font-family="Helvetica">stage.sold_at</text><text x="429.522" y="830.167" fill="#000" font-size="12" textLength="36.697" font-family="Helvetica">date of</text><text x="262.114" y="845.261" fill="#000" font-size="12" textLength="52.682" font-family="Helvetica">mart.units</text><text x="348.159" y="845.261" fill="#000" font-size="12" textLength="70.717" font-family="Helvetica">stage.sale_id</text><text x="429.522" y="845.261" fill="#000" font-size="12" textLength="29.355" font-family="Helvetica">count</text><text x="262.114" y="860.355" fill="#000" font-size="12" textLength="70.699" font-family="Helvetica">mart.revenue</text><text x="348.159" y="860.355" fill="#000" font-size="12" textLength="58.699" font-family="Helvetica">stage.price</text><text x="429.522" y="860.355" fill="#000" font-size="12" textLength="22.67" font-family="Helvetica">sum</text><line x1="258.78" y1="772.429" x2="514.219" y2="772.429" style="stroke:#000;stroke-width:1;"/><line x1="258.78" y1="787.523" x2="514.219" y2="787.523" style="stroke:#000;stroke-width:1;"/><line x1="258.78" y1="802.616" x2="514.219" y2="802.616" style="stroke:#000;stroke-width:1;"/><line x1="258.78" y1="817.71" x2="514.219" y2="817.71" style="stroke:#000;stroke-width:1;"/><line x1="258.78" y1="832.804" x2="514.219" y2="832.804" style="stroke:#000;stroke-width:1;"/><line x1="258.78" y1="847.898" x2="514.219" y2="847.898" style="stroke:#000;stroke-width:1;"/><line x1="258.78" y1="862.991" x2="514.219" y2="862.991" style="stroke:#000;stroke-width:1;"/><line x1="258.78" y1="772.429" x2="258.78" y2="862.991" style="stroke:#000;stroke-width:1;"/><line x1="344.825" y1="772.429" x2="344.825" y2="862.991" style="stroke:#000;stroke-width:1;"/><line x1="426.188" y1="772.429" x2="426.188" y2="862.991" style="stroke:#000;stroke-width:1;"/><line x1="514.219" y1="772.429" x2="514.219" y2="862.991" style="stroke:#000;stroke-width:1;"/></g><!--link till to raw--><g data-ref="link-till-export-to-raw-till-sales-sale-id-text-isbn-text" data-from="till-export" data-to="raw-till-sales-sale-id-text-isbn-text" class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk7" data-source-line="62" data-link-type="dependency"><title>till-export → raw-till-sales-sale-id-text-isbn-text: drops CSV (SFTP) (column-lineage.puml:62)</title><path d="M113,127.605 C113,148.435 113,169.455 113,191.965" style="stroke:#000;stroke-width:1;" fill="none" id="till-to-raw" codeLine="62"/><polygon points="113,196.965,117,187.965,113,191.965,109,187.965,113,196.965" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="12" y="158.742" fill="#000" font-size="12" textLength="30.018" font-family="Helvetica">drops</text><text x="42.018" y="158.742" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="45.352" y="158.742" fill="#000" font-size="12" textLength="24.674" font-family="Helvetica">CSV</text><text x="70.025" y="158.742" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="73.359" y="158.742" fill="#000" font-size="12" textLength="38.66" font-family="Helvetica">(SFTP)</text></g><!--link raw to clean--><g data-ref="link-raw-till-sales-sale-id-text-isbn-text-to-1-clean" data-from="raw-till-sales-sale-id-text-isbn-text" data-to="1-clean" class="link" data-entity-1="ent0004" data-entity-2="ent0002" id="lnk8" data-source-line="63" data-link-type="dependency"><title>raw-till-sales-sale-id-text-isbn-text → 1-clean: reads (SQL) (column-lineage.puml:63)</title><path d="M113,299.045 C113,323.355 113,345.865 113,363.375" style="stroke:#000;stroke-width:1;" fill="none" id="raw-to-clean" codeLine="63"/><polygon points="113,368.375,117,359.375,113,363.375,109,359.375,113,368.375" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="47" y="330.162" fill="#000" font-size="12" textLength="30.018" font-family="Helvetica">reads</text><text x="77.018" y="330.162" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="80.352" y="330.162" fill="#000" font-size="12" textLength="32.004" font-family="Helvetica">(SQL)</text></g><!--link clean to stage--><g data-ref="link-1-clean-to-stage-sales-sale-id-bigint-isbn-char-13" data-from="1-clean" data-to="stage-sales-sale-id-bigint-isbn-char-13" class="link" data-entity-1="ent0002" data-entity-2="ent0005" id="lnk9" data-source-line="64" data-link-type="dependency"><title>1-clean → stage-sales-sale-id-bigint-isbn-char-13: writes (SQL) (column-lineage.puml:64)</title><path d="M113,404.025 C113,421.535 113,444.095 113,468.445" style="stroke:#000;stroke-width:1;" fill="none" id="clean-to-stage" codeLine="64"/><polygon points="113,473.445,117,464.445,113,468.445,109,464.445,113,473.445" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="46" y="435.192" fill="#000" font-size="12" textLength="31.336" font-family="Helvetica">writes</text><text x="77.336" y="435.192" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="80.67" y="435.192" fill="#000" font-size="12" textLength="32.004" font-family="Helvetica">(SQL)</text></g><!--link stage to agg--><g data-ref="link-stage-sales-sale-id-bigint-isbn-char-13-to-2-aggregate" data-from="stage-sales-sale-id-bigint-isbn-char-13" data-to="2-aggregate" class="link" data-entity-1="ent0005" data-entity-2="ent0003" id="lnk10" data-source-line="65" data-link-type="dependency"><title>stage-sales-sale-id-bigint-isbn-char-13 → 2-aggregate: reads (SQL) (column-lineage.puml:65)</title><path d="M113,575.605 C113,599.925 113,622.435 113,639.935" style="stroke:#000;stroke-width:1;" fill="none" id="stage-to-agg" codeLine="65"/><polygon points="113,644.935,117,635.935,113,639.935,109,635.935,113,644.935" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="47" y="606.732" fill="#000" font-size="12" textLength="30.018" font-family="Helvetica">reads</text><text x="77.018" y="606.732" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="80.352" y="606.732" fill="#000" font-size="12" textLength="32.004" font-family="Helvetica">(SQL)</text></g><!--link agg to mart--><g data-ref="link-2-aggregate-to-mart-daily-sales-sale-date-date-units" data-from="2-aggregate" data-to="mart-daily-sales-sale-date-date-units" class="link" data-entity-1="ent0003" data-entity-2="ent0006" id="lnk11" data-source-line="66" data-link-type="dependency"><title>2-aggregate → mart-daily-sales-sale-date-date-units: writes (SQL) (column-lineage.puml:66)</title><path d="M113,680.565 C113,701.775 113,732.965 113,761.725" style="stroke:#000;stroke-width:1;" fill="none" id="agg-to-mart" codeLine="66"/><polygon points="113,766.725,117,757.725,113,761.725,109,757.725,113,766.725" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="46" y="720.102" fill="#000" font-size="12" textLength="31.336" font-family="Helvetica">writes</text><text x="77.336" y="720.102" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="80.67" y="720.102" fill="#000" font-size="12" textLength="32.004" font-family="Helvetica">(SQL)</text></g><g class="legend" data-source-line="77"><rect x="172.016" y="883.991" width="360.203" height="104.563" fill="none" style="stroke:#999;stroke-width:1;" rx="7.5" ry="7.5"/><text x="180.35" y="903.448" fill="#000" font-size="12" textLength="28.014" font-weight="700" font-family="Helvetica">Mark</text><text x="255.075" y="903.448" fill="#000" font-size="12" textLength="48.668" font-weight="700" font-family="Helvetica">Meaning</text><text x="180.35" y="918.542" fill="#000" font-size="12" textLength="26.678" font-family="Helvetica">actor</text><text x="255.075" y="918.542" fill="#000" font-size="12" textLength="82.043" font-family="Helvetica">external source</text><text x="180.35" y="933.636" fill="#000" font-size="12" textLength="66.721" font-family="Helvetica">rounded box</text><text x="255.075" y="933.636" fill="#000" font-size="12" textLength="190.77" font-family="Helvetica">process, numbered as in the source</text><text x="180.35" y="948.73" fill="#000" font-size="12" textLength="26.021" font-family="Helvetica">table</text><text x="255.075" y="948.73" fill="#000" font-size="12" textLength="196.102" font-family="Helvetica">table whose columns the flow names</text><text x="180.35" y="963.823" fill="#000" font-size="12" textLength="68.057" font-family="Helvetica">lineage table</text><text x="255.075" y="963.823" fill="#000" font-size="12" textLength="268.811" font-family="Helvetica">each target column, its source column and the rule</text><text x="180.35" y="978.917" fill="#000" font-size="12" textLength="48.035" font-family="Helvetica">table line</text><text x="255.075" y="978.917" fill="#000" font-size="12" textLength="228.117" font-family="Helvetica">the process reads or writes the whole table</text><line x1="177.016" y1="890.991" x2="527.219" y2="890.991" style="stroke:#000;stroke-width:1;"/><line x1="177.016" y1="906.085" x2="527.219" y2="906.085" style="stroke:#000;stroke-width:1;"/><line x1="177.016" y1="921.179" x2="527.219" y2="921.179" style="stroke:#000;stroke-width:1;"/><line x1="177.016" y1="936.273" x2="527.219" y2="936.273" style="stroke:#000;stroke-width:1;"/><line x1="177.016" y1="951.366" x2="527.219" y2="951.366" style="stroke:#000;stroke-width:1;"/><line x1="177.016" y1="966.46" x2="527.219" y2="966.46" style="stroke:#000;stroke-width:1;"/><line x1="177.016" y1="981.554" x2="527.219" y2="981.554" style="stroke:#000;stroke-width:1;"/><line x1="177.016" y1="890.991" x2="177.016" y2="981.554" style="stroke:#000;stroke-width:1;"/><line x1="251.741" y1="890.991" x2="251.741" y2="981.554" style="stroke:#000;stroke-width:1;"/><line x1="527.219" y1="890.991" x2="527.219" y2="981.554" style="stroke:#000;stroke-width:1;"/></g></g></svg>
+</main>
+<footer>Drag to pan, wheel or pinch to zoom, double-click to reset, click an element to keep it highlighted. Hover shows the element's details.</footer>
+<script>
+(function () {
+  var ID = "ps-56b755d5", WHEEL_NEEDS_MODIFIER = false;
+  function find() {
+    var s = document.getElementById(ID); if (s && !s.__ps) return s;
+    var all = document.querySelectorAll("*");
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].shadowRoot; if (!r) continue;
+      var t = r.getElementById(ID); if (t && !t.__ps) return t;
+    }
+    return null;
+  }
+  var svg = find(); if (!svg) return; svg.__ps = true;
+  svg.classList.add("ps-js");
+  var root = svg.getRootNode();
+  var vb0 = svg.getAttribute("viewBox").split(/[\s,]+/).map(Number), vb = vb0.slice();
+  svg.__psVB0 = vb0.join(" ");
+  function setVB() { svg.setAttribute("viewBox", vb.join(" ")); }
+  var groups = svg.querySelectorAll("g[data-ref]"), links = svg.querySelectorAll("g[data-from]");
+  function related(ref) {
+    var on = {}; on[ref] = 1;
+    for (var i = 0; i < links.length; i++) {
+      var l = links[i];
+      if (l.getAttribute("data-from") === ref || l.getAttribute("data-to") === ref || l.getAttribute("data-ref") === ref) {
+        on[l.getAttribute("data-ref")] = 1; on[l.getAttribute("data-from")] = 1; on[l.getAttribute("data-to")] = 1;
+      }
+    }
+    return on;
+  }
+  var sticky = null;
+  function focus(ref) {
+    var on = ref ? related(ref) : {};
+    svg.classList.toggle("ps-focus", !!ref);
+    for (var i = 0; i < groups.length; i++) groups[i].classList.toggle("ps-on", !!on[groups[i].getAttribute("data-ref")]);
+  }
+  function refAt(e) { var g = e.target.closest ? e.target.closest("g[data-ref]") : null; return g ? g.getAttribute("data-ref") : null; }
+  svg.addEventListener("mouseover", function (e) { if (!sticky) focus(refAt(e)); });
+  svg.addEventListener("mouseleave", function () { if (!sticky) focus(null); });
+  function zoom(f, cx, cy) {
+    var r = svg.getBoundingClientRect(); if (!r.width) return;
+    var px = cx === undefined ? 0.5 : (cx - r.left) / r.width, py = cy === undefined ? 0.5 : (cy - r.top) / r.height;
+    var x = vb[0] + px * vb[2], y = vb[1] + py * vb[3];
+    vb[2] *= f; vb[3] *= f; vb[0] = x - px * vb[2]; vb[1] = y - py * vb[3]; setVB();
+  }
+  function reset() { vb = vb0.slice(); setVB(); sticky = null; focus(null); }
+  var ptrs = {}, drag = null, moved = 0, pinch = 0;
+  svg.addEventListener("pointerdown", function (e) {
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY }; moved = 0;
+    if (Object.keys(ptrs).length === 1) drag = { x: e.clientX, y: e.clientY, vb: vb.slice() };
+    svg.setPointerCapture(e.pointerId);
+  });
+  svg.addEventListener("pointermove", function (e) {
+    if (!ptrs[e.pointerId]) return;
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
+    var ids = Object.keys(ptrs);
+    if (ids.length === 2) {
+      var a = ptrs[ids[0]], b = ptrs[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinch) zoom(pinch / d, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      pinch = d; moved = 99; drag = null; return;
+    }
+    if (!drag) return;
+    var r = svg.getBoundingClientRect(), k = vb[2] / r.width;
+    moved = Math.max(moved, Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y));
+    vb[0] = drag.vb[0] - (e.clientX - drag.x) * k; vb[1] = drag.vb[1] - (e.clientY - drag.y) * k; setVB();
+  });
+  function up(e) { delete ptrs[e.pointerId]; if (Object.keys(ptrs).length < 2) pinch = 0; if (!Object.keys(ptrs).length) drag = null; }
+  svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
+  svg.addEventListener("click", function (e) {
+    if (moved > 3) { e.stopPropagation(); e.preventDefault(); return; }
+    var ref = refAt(e); sticky = ref && ref !== sticky ? ref : null; focus(sticky);
+  });
+  svg.addEventListener("dblclick", function (e) { e.preventDefault(); reset(); });
+  svg.addEventListener("wheel", function (e) {
+    if (WHEEL_NEEDS_MODIFIER && !(e.ctrlKey || e.metaKey)) return;
+    e.preventDefault(); zoom(e.deltaY < 0 ? 0.9 : 1.1, e.clientX, e.clientY);
+  }, { passive: false });
+  var bar = root.querySelector ? root.querySelector('.ps-bar[data-for="' + ID + '"]') : null;
+  if (bar) bar.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return; e.stopPropagation();
+    var act = b.getAttribute("data-act");
+    if (act === "in") zoom(0.8); else if (act === "out") zoom(1.25); else if (act === "reset") reset();
+    else if (act === "legend") svg.classList.toggle("ps-nolegend");
+  });
+  svg.__psReset = reset;
+})();
+</script>
+<script>
+(function () {
+  var svg = document.querySelector("main.card svg"), bar = document.querySelector(".card .ps-bar");
+  document.querySelectorAll("header button[data-act]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = bar.querySelector('[data-act="' + b.getAttribute("data-act") + '"]'); if (t) t.click(); });
+  });
+  document.getElementById("ps-theme").addEventListener("click", function () {
+    var r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    r.dataset.theme = dark ? "light" : "dark";
+  });
+  document.getElementById("ps-png").addEventListener("click", function () {
+    var clone = svg.cloneNode(true), vb = (svg.__psVB0 || svg.getAttribute("viewBox")).split(/[\s,]+/).map(Number);
+    clone.setAttribute("viewBox", vb.join(" ")); clone.setAttribute("width", vb[2]); clone.setAttribute("height", vb[3]);
+    clone.removeAttribute("style"); clone.classList.remove("ps-focus", "ps-nolegend");
+    var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(clone));
+    var img = new Image();
+    img.onload = function () {
+      var c = document.createElement("canvas"); c.width = vb[2] * 2; c.height = vb[3] * 2;
+      var g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob(function (blob) { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = document.title.replace(/[^\w.-]+/g, "-") + ".png"; a.click(); });
+    };
+    img.src = url;
+  });
+  document.documentElement.dataset.psReady = "1";
+})();
+</script>
+</body>
+</html>

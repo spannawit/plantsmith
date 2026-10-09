@@ -1,0 +1,31 @@
+@startuml
+' Smoke file: every Azure include listed in preambles/house-azure.puml, one element each.
+!theme plain
+hide stereotype
+!include <azure/AzureCommon>
+!include <azure/Storage/AzureBlobStorage>
+!include <azure/Storage/AzureDataLakeStorage>
+!include <azure/Databases/AzureSqlDatabase>
+!include <azure/Analytics/AzureSynapseAnalytics>
+!include <azure/Databases/AzureDataFactory>
+!include <azure/Analytics/AzureDatabricks>
+!include <azure/Analytics/AzureEventHub>
+!include <azure/Compute/AzureFunction>
+!include <azure/Containers/AzureKubernetesService>
+!include <azure/Security/AzureKeyVault>
+!include <azure/Identity/AzureActiveDirectory>
+!include <azure/Networking/AzureVirtualNetwork>
+title Azure icon smoke test
+AzureBlobStorage(a1, "Blob", "Azure Blob Storage")
+AzureDataLakeStorage(a2, "Data Lake", "ADLS Gen2")
+AzureSqlDatabase(a3, "SQL", "Azure SQL Database")
+AzureSynapseAnalytics(a4, "Synapse", "Azure Synapse Analytics")
+AzureDataFactory(a5, "Data Factory", "Azure Data Factory")
+AzureDatabricks(a6, "Databricks", "Azure Databricks")
+AzureEventHub(a7, "Event Hubs", "Azure Event Hubs")
+AzureFunction(a8, "Functions", "Azure Functions")
+AzureKubernetesService(a9, "AKS", "Azure Kubernetes Service")
+AzureKeyVault(a10, "Key Vault", "Azure Key Vault")
+AzureActiveDirectory(a11, "Entra ID", "Azure Active Directory")
+AzureVirtualNetwork(a12, "VNet", "Azure Virtual Network")
+@enduml

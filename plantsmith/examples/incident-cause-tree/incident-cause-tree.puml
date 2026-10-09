@@ -1,0 +1,48 @@
+@startwbs
+' Source (synthetic brief): the bookshop's daily sales report showed zero revenue on 2026-05-04.
+' Data: the till CSV arrived with a new column order (vendor change ticket TILL-12). Process: the load
+' step has no schema check (runbook step 3 skips it). Tooling: the row-count alert compares counts, not
+' sums (alert config). The report was published because the count check passed AND no sum check
+' exists. Not stated: who approved the vendor change.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+wbsDiagram {
+  .data { BackgroundColor #E3F2FD }
+  .process { BackgroundColor #E8F5E9 }
+  .tooling { BackgroundColor #FFF3E0 }
+  .people { BackgroundColor #F3E5F5 }
+  .failure { BackgroundColor #FADBD8 }
+  .gate { BackgroundColor #FFFFFF; LineThickness 2 }
+}
+</style>
+' house-preamble-end
+
+title Cause tree for the zero-revenue sales report of 2026-05-04 (synthetic)
+
+* Daily sales report shows zero revenue <<failure>>
+** Data <<data>>
+*** Till CSV columns reordered\n//evidence: vendor ticket TILL-12//
+** Process <<process>>
+*** Load step has no schema check\n//evidence: runbook step 3//
+*** Vendor change approval\n//evidence: not stated//
+** Tooling <<tooling>>
+*** AND: published anyway <<gate>>
+**** Row-count check passed\n//evidence: alert log 2026-05-04//
+**** No revenue-sum check\n//evidence: alert config//
+
+legend bottom
+  |= Mark |= Meaning |
+  |<#FADBD8>| the problem |
+  |<#E3F2FD>| data cause |
+  |<#E8F5E9>| process cause |
+  |<#FFF3E0>| tooling cause |
+  | bold box "AND:" | both causes below it were needed (OR: either one) |
+  | //italic line// | the evidence for the cause |
+endlegend
+@endwbs

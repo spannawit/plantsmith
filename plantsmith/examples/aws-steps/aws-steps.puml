@@ -1,0 +1,80 @@
+@startuml
+' Source (synthetic brief): the bookshop's web orders on AWS, in five numbered steps. 1. A customer
+' places an order through the web shop (API Gateway). 2. An order Lambda saves the order in DynamoDB.
+' 3. The Lambda publishes an OrderPlaced event to an SQS queue. 4. A fulfilment Lambda reads the queue
+' and writes a packing slip to S3. 5. The shop manager reads the daily slips from S3.
+' Not stated: retries and the dead-letter queue.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+skinparam nodesep 40
+skinparam ranksep 50
+hide stereotype
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+</style>
+!include <awslib20/AWSCommon>
+!include <awslib20/Groups/AWSCloud>
+!include <awslib20/Groups/Generic>
+!include <awslib20/Groups/Region>
+!include <awslib20/Groups/VPC>
+!include <awslib20/Groups/AvailabilityZone>
+!include <awslib20/Groups/PublicSubnet>
+!include <awslib20/Groups/PrivateSubnet>
+!include <awslib20/Groups/AutoScalingGroup>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+!include <awslib20/General/Users>
+!include <awslib20/NetworkingContentDelivery/APIGateway>
+!include <awslib20/Compute/Lambda>
+!include <awslib20/Database/DynamoDB>
+!include <awslib20/ApplicationIntegration/SimpleQueueService>
+!include <awslib20/Storage/SimpleStorageService>
+
+skinparam nodesep 110
+skinparam ranksep 100
+title Container diagram for the bookshop web orders on AWS, in five steps (synthetic)
+
+Users(customer, "Customer", "browser")
+AWSCloudGroup(cloud, "AWS Cloud") {
+  APIGateway(api, "Web shop API", "Amazon API Gateway")
+  Lambda(order_fn, "Order handler", "AWS Lambda")
+  DynamoDB(orders, "Orders", "Amazon DynamoDB")
+  SimpleQueueService(queue, "Order events", "Amazon SQS")
+  Lambda(pack_fn, "Fulfilment", "AWS Lambda")
+  SimpleStorageService(slips, "Packing slips", "Amazon S3")
+}
+Users(manager, "Shop manager", "browser")
+
+customer -right-> api : $step(1) orders\n(HTTPS)
+api -down-> order_fn : invokes\n(Lambda)
+order_fn -right-> orders : $step(2) saves\n(DynamoDB API)
+order_fn -down-> queue : $step(3) publishes\n(SQS)
+queue -right-> pack_fn : $step(4) delivers\n(SQS poll)
+pack_fn -down-> slips : writes slip\n(S3 PUT)
+manager -up-> slips : $step(5) reads slips\n(HTTPS)
+
+legend bottom
+  |= Step |= What happens |
+  | $step(1) | a customer places an order in the web shop |
+  | $step(2) | the order handler saves it in DynamoDB |
+  | $step(3) | it publishes OrderPlaced to the queue |
+  | $step(4) | the fulfilment function writes a packing slip to S3 |
+  | $step(5) | the shop manager reads the day's slips |
+  |= Mark |= Meaning |
+  | icon | AWS service named in the source (official AWS icon) |
+  | AWS Cloud frame | the services the source places on AWS |
+endlegend
+@enduml

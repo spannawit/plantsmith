@@ -1,0 +1,26 @@
+
+' Lifecycle of one thing (a DAG run, a ticket, a partition). Start from preambles/house.puml +
+' this file. One state per box, every transition labelled with the event that causes it;
+' a failure state is filled <<failure>>.
+
+hide empty description
+title State diagram for <thing> lifecycle (as-of date)
+
+[*] --> Replace_first : Replace: created
+state "Replace: first state" as Replace_first
+state "Replace: working" as Replace_working
+state "Replace: done" as Replace_done
+state "Replace: failed" as Replace_failed <<failure>>
+Replace_first --> Replace_working : Replace: event
+Replace_working --> Replace_done : Replace: event
+Replace_working --> Replace_failed : Replace: event
+Replace_failed --> Replace_first : Replace: retry
+Replace_done --> [*]
+
+legend right
+  |= Mark |= Meaning |
+  | rounded box | state |
+  |<#FADBD8>| failure state |
+  | circle / ringed dot | first / last state |
+endlegend
+@enduml

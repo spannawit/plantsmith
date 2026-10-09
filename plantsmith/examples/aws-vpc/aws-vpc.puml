@@ -1,0 +1,103 @@
+@startuml
+' Source (synthetic brief, after draw.io's AWS 'Confluence' template): users reach a Confluence
+' cluster over HTTPS through an internet gateway and an Application Load Balancer. The VPC spans
+' two Availability Zones; each has a public DMZ subnet with an nginx reverse proxy on an Elastic IP,
+' and a private subnet with a Confluence Auto Scaling group on EC2 and a PostgreSQL RDS instance.
+' Primary in zone 1, secondary in zone 2.
+' Not stated: how the two databases replicate.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+skinparam nodesep 40
+skinparam ranksep 50
+hide stereotype
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+</style>
+!include <awslib20/AWSCommon>
+!include <awslib20/Groups/AWSCloud>
+!include <awslib20/Groups/Generic>
+!include <awslib20/Groups/Region>
+!include <awslib20/Groups/VPC>
+!include <awslib20/Groups/AvailabilityZone>
+!include <awslib20/Groups/PublicSubnet>
+!include <awslib20/Groups/PrivateSubnet>
+!include <awslib20/Groups/AutoScalingGroup>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+!include <awslib20/General/Users>
+!include <awslib20/NetworkingContentDelivery/ElasticLoadBalancing>
+!include <awslib20/NetworkingContentDelivery/VPCInternetGateway>
+!include <awslib20/Compute/EC2Instance>
+!include <awslib20/Compute/EC2Instances>
+!include <awslib20/Database/RDS>
+
+title Deployment diagram for a Confluence cluster on AWS, two Availability Zones (synthetic)
+
+Users(users, "Users", "browser")
+
+AWSCloudGroup(cloud, "AWS Cloud") {
+  VPCInternetGateway(igw, "Internet Gateway", "IGW")
+  VPCGroup(vpc, "VPC") {
+    ElasticLoadBalancing(elb, "Elastic Load Balancer", "ALB")
+    AvailabilityZoneGroup(az1, "Availability Zone 1") {
+      PublicSubnetGroup(dmz1, "Public DMZ1") {
+        EC2Instance(rp1, "Reverse Proxy", "nginx, Elastic IP")
+      }
+      PrivateSubnetGroup(priv1, "Private Subnet 1") {
+        AutoScalingGroupGroup(asg1, "Auto Scaling group") {
+          EC2Instances(conf1, "Confluence Cluster 1", "EC2")
+        }
+        RDS(db1, "Primary", "PostgreSQL")
+      }
+    }
+    AvailabilityZoneGroup(az2, "Availability Zone 2") {
+      PublicSubnetGroup(dmz2, "Public DMZ2") {
+        EC2Instance(rp2, "Reverse Proxy", "nginx, Elastic IP")
+      }
+      PrivateSubnetGroup(priv2, "Private Subnet 2") {
+        AutoScalingGroupGroup(asg2, "Auto Scaling group") {
+          EC2Instances(conf2, "Confluence Cluster 2", "EC2")
+        }
+        RDS(db2, "Secondary", "PostgreSQL")
+      }
+    }
+  }
+}
+
+' Layout move E: the two zones sit side by side, row for row
+rp1 -[hidden]right- rp2
+conf1 -[hidden]right- conf2
+db1 -[hidden]right- db2
+
+skinparam ranksep 60
+users -down-> igw : browse (HTTPS)
+igw -down-> elb : forwards (HTTPS)
+elb -down-> rp1 : balances (HTTPS)
+elb -down-> rp2 : balances\n(HTTPS)
+rp1 -down-> conf1 : proxies (HTTP)
+rp2 -down-> conf2 : proxies (HTTP)
+conf1 ---> db1 : stores pages (SQL)
+conf2 ---> db2 : stores pages\n(SQL)
+db1 .right.> db2
+
+legend bottom
+  |= Mark |= Meaning |
+  | icon | the AWS service, official AWS Architecture Icon |
+  | solid frame | AWS Cloud, VPC, subnet (administrative boundary) |
+  | dashed frame | Availability Zone, Auto Scaling group (logical group) |
+  | dashed line | not stated in the source: how Primary replicates to Secondary |
+endlegend
+@enduml

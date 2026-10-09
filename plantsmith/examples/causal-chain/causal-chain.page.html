@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why the signed edition oversold (causal chain)</title>
+<style>
+:root{--bg:#f6f5f2;--fg:#1b1a18;--muted:#6b675e;--line:#d9d6cf}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17161a;--fg:#e6e3dc;--muted:#a19d94;--line:#3a3840}}
+:root[data-theme="dark"]{--bg:#17161a;--fg:#e6e3dc;--muted:#a19d94;--line:#3a3840}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 16px}
+header h1{font-size:16px;margin:0 auto 0 0}
+header button{font:13px/1 system-ui,sans-serif;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--fg);cursor:pointer}
+.card{margin:0 16px 16px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;height:calc(100vh - 110px);min-height:320px}
+.card .ps-bar{display:none}
+.card svg{width:100%;height:100%;display:block}
+footer{margin:0 16px 16px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<header><h1>Why the signed edition oversold (causal chain)</h1>
+<button type="button" data-act="in" title="Zoom in">+</button>
+<button type="button" data-act="out" title="Zoom out">&minus;</button>
+<button type="button" data-act="reset" title="Reset view">Reset</button>
+<button type="button" data-act="legend" title="Show or hide the legend">Legend</button>
+<button type="button" id="ps-theme" title="Light or dark page">Theme</button>
+<button type="button" id="ps-png" title="Download the diagram as PNG">PNG</button>
+</header>
+<main class="card">
+<style>
+#ps-f546fae9 g[data-ref]{transition:opacity .15s}
+#ps-f546fae9:hover g[data-ref]{opacity:0.35}
+#ps-f546fae9 g[data-ref]:hover{opacity:1}
+#ps-f546fae9 g[data-ref="radio-announces-the-signing"]:hover ~ g[data-from="radio-announces-the-signing"],#ps-f546fae9 g[data-ref="radio-announces-the-signing"]:hover ~ g[data-to="radio-announces-the-signing"]{opacity:1}
+#ps-f546fae9 g[data-ref="walk-in-traffic-3x-normal"]:hover ~ g[data-from="walk-in-traffic-3x-normal"],#ps-f546fae9 g[data-ref="walk-in-traffic-3x-normal"]:hover ~ g[data-to="walk-in-traffic-3x-normal"]{opacity:1}
+#ps-f546fae9 g[data-ref="shelf-stock-runs-out"]:hover ~ g[data-from="shelf-stock-runs-out"],#ps-f546fae9 g[data-ref="shelf-stock-runs-out"]:hover ~ g[data-to="shelf-stock-runs-out"]{opacity:1}
+#ps-f546fae9 g[data-ref="web-stock-in-sync"]:hover ~ g[data-from="web-stock-in-sync"],#ps-f546fae9 g[data-ref="web-stock-in-sync"]:hover ~ g[data-to="web-stock-in-sync"]{opacity:1}
+#ps-f546fae9 g[data-ref="web-shop-sells-on-stale-count"]:hover ~ g[data-from="web-shop-sells-on-stale-count"],#ps-f546fae9 g[data-ref="web-shop-sells-on-stale-count"]:hover ~ g[data-to="web-shop-sells-on-stale-count"]{opacity:1}
+#ps-f546fae9 g[data-ref="40-copies-oversold"]:hover ~ g[data-from="40-copies-oversold"],#ps-f546fae9 g[data-ref="40-copies-oversold"]:hover ~ g[data-to="40-copies-oversold"]{opacity:1}
+#ps-f546fae9 g[data-ref="refund-log-monday"]:hover ~ g[data-from="refund-log-monday"],#ps-f546fae9 g[data-ref="refund-log-monday"]:hover ~ g[data-to="refund-log-monday"]{opacity:1}
+#ps-f546fae9 g[data-ref="distributor-restock"]:hover ~ g[data-from="distributor-restock"],#ps-f546fae9 g[data-ref="distributor-restock"]:hover ~ g[data-to="distributor-restock"]{opacity:1}
+#ps-f546fae9 g[data-ref="till-pushes-stock-counts-to-the-web-shop"]:hover ~ g[data-from="till-pushes-stock-counts-to-the-web-shop"],#ps-f546fae9 g[data-ref="till-pushes-stock-counts-to-the-web-shop"]:hover ~ g[data-to="till-pushes-stock-counts-to-the-web-shop"]{opacity:1}
+#ps-f546fae9 g[data-ref="could-it-restock-in-time"]:hover ~ g[data-from="could-it-restock-in-time"],#ps-f546fae9 g[data-ref="could-it-restock-in-time"]:hover ~ g[data-to="could-it-restock-in-time"]{opacity:1}
+#ps-f546fae9.ps-focus g[data-ref]:not(.ps-on){opacity:0.35}
+#ps-f546fae9 g[data-ref].ps-on{opacity:1}
+#ps-f546fae9 g.link:hover path,#ps-f546fae9 g.link.ps-on path{stroke-width:2.5px}
+#ps-f546fae9.ps-nolegend g.legend{display:none}
+#ps-f546fae9.ps-js{cursor:grab;touch-action:none}
+.ps-bar{display:flex;gap:4px;justify-content:flex-end;margin:0 0 4px}
+.ps-bar button{font:12px/1 system-ui,sans-serif;padding:4px 8px;border:1px solid #c9c5bc;border-radius:5px;background:#fff;color:#1b1a18;cursor:pointer}
+</style>
+<div class="ps-bar" data-for="ps-f546fae9"><button type="button" data-act="in" title="Zoom in">+</button><button type="button" data-act="out" title="Zoom out">−</button><button type="button" data-act="reset" title="Reset view">Reset</button><button type="button" data-act="legend" title="Show or hide the legend">Legend</button><button type="button" data-act="full" title="Open the diagram full screen (Esc closes)">⛶ Full screen</button></div>
+<svg id="ps-f546fae9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="DESCRIPTION" viewBox="0 0 592 818" zoomAndPan="magnify" contentStyleType="text/css"><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="title" data-source-line="36"><text x="116.607" y="31.609" fill="#000" font-size="16" textLength="357.391" font-weight="700" font-family="Helvetica">Why the signed edition oversold (causal chain)</text></g><!--entity radio--><g data-ref="radio-announces-the-signing" class="entity" data-qualified-name="radio" id="ent0001" data-source-line="38"><title>Radio announces the signing (causal-chain.puml:38)</title><rect x="356.349" y="57.151" width="174.781" height="35.094" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="7" ry="7"/><text x="366.349" y="79.608" fill="#000" font-size="12" textLength="31.354" font-family="Helvetica">Radio</text><text x="397.702" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="401.036" y="79.608" fill="#000" font-size="12" textLength="58.717" font-family="Helvetica">announces</text><text x="459.753" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="463.087" y="79.608" fill="#000" font-size="12" textLength="16.682" font-family="Helvetica">the</text><text x="479.769" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="483.102" y="79.608" fill="#000" font-size="12" textLength="38.027" font-family="Helvetica">signing</text></g><!--entity traffic--><g data-ref="walk-in-traffic-3x-normal" class="entity" data-qualified-name="traffic" id="ent0002" data-source-line="39"><title>Walk-in traffic 3x normal (causal-chain.puml:39)</title><rect x="308.389" y="157.241" width="148.695" height="35.094" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="7" ry="7"/><text x="318.389" y="179.698" fill="#000" font-size="12" textLength="40.002" font-family="Helvetica">Walk-in</text><text x="358.391" y="179.698" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="361.725" y="179.698" fill="#000" font-size="12" textLength="29.338" font-family="Helvetica">traffic</text><text x="391.062" y="179.698" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="394.396" y="179.698" fill="#000" font-size="12" textLength="12.674" font-family="Helvetica">3x</text><text x="407.07" y="179.698" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="410.404" y="179.698" fill="#000" font-size="12" textLength="36.68" font-family="Helvetica">normal</text></g><!--entity shelf--><g data-ref="shelf-stock-runs-out" class="entity" data-qualified-name="shelf" id="ent0003" data-source-line="40"><title>Shelf stock runs out (causal-chain.puml:40)</title><rect x="195.039" y="252.341" width="125.387" height="35.094" fill="#FFF" style="stroke:#000;stroke-width:1;" rx="7" ry="7"/><text x="205.039" y="274.798" fill="#000" font-size="12" textLength="27.352" font-family="Helvetica">Shelf</text><text x="232.39" y="274.798" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="235.724" y="274.798" fill="#000" font-size="12" textLength="28.008" font-family="Helvetica">stock</text><text x="263.732" y="274.798" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="267.066" y="274.798" fill="#000" font-size="12" textLength="23.344" font-family="Helvetica">runs</text><text x="290.41" y="274.798" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="293.744" y="274.798" fill="#000" font-size="12" textLength="16.682" font-family="Helvetica">out</text></g><!--entity sync--><g data-ref="web-stock-in-sync" class="entity" data-qualified-name="sync" id="ent0004" data-source-line="41"><title>Web stock in sync? (causal-chain.puml:41)</title><polygon points="361.109,367.531,309.419,354.981,206.049,354.981,154.359,367.531,206.049,380.071,309.419,380.071,361.109,367.531" fill="#FFF" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="206.044" y="372.438" fill="#000" font-size="12" textLength="24.674" font-family="Helvetica">Web</text><text x="230.718" y="372.438" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="234.052" y="372.438" fill="#000" font-size="12" textLength="28.008" font-family="Helvetica">stock</text><text x="262.06" y="372.438" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="265.394" y="372.438" fill="#000" font-size="12" textLength="9.34" font-family="Helvetica">in</text><text x="274.734" y="372.438" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="278.068" y="372.438" fill="#000" font-size="12" textLength="31.348" font-family="Helvetica">sync?</text></g><!--entity stale--><g data-ref="web-shop-sells-on-stale-count" class="entity" data-qualified-name="stale" id="ent0005" data-source-line="42"><title>Web shop sells on stale count (causal-chain.puml:42)</title><rect x="168.019" y="447.621" width="179.422" height="35.094" fill="#FADBD8" style="stroke:#000;stroke-width:1;" rx="7" ry="7"/><text x="178.019" y="470.078" fill="#000" font-size="12" textLength="24.674" font-family="Helvetica">Web</text><text x="202.692" y="470.078" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="206.026" y="470.078" fill="#000" font-size="12" textLength="26.021" font-family="Helvetica">shop</text><text x="232.048" y="470.078" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="235.382" y="470.078" fill="#000" font-size="12" textLength="24.006" font-family="Helvetica">sells</text><text x="259.388" y="470.078" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="262.722" y="470.078" fill="#000" font-size="12" textLength="13.348" font-family="Helvetica">on</text><text x="276.069" y="470.078" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="279.403" y="470.078" fill="#000" font-size="12" textLength="25.348" font-family="Helvetica">stale</text><text x="304.751" y="470.078" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="308.085" y="470.078" fill="#000" font-size="12" textLength="29.355" font-family="Helvetica">count</text></g><!--entity oversold--><g data-ref="40-copies-oversold" class="entity" data-qualified-name="oversold" id="ent0006" data-source-line="43"><title>40 copies oversold (causal-chain.puml:43)</title><rect x="197.709" y="542.711" width="120.061" height="35.094" fill="#FADBD8" style="stroke:#000;stroke-width:1;" rx="7" ry="7"/><text x="207.709" y="565.168" fill="#000" font-size="12" textLength="13.348" font-family="Helvetica">40</text><text x="221.056" y="565.168" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="224.39" y="565.168" fill="#000" font-size="12" textLength="34.688" font-family="Helvetica">copies</text><text x="259.078" y="565.168" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="262.412" y="565.168" fill="#000" font-size="12" textLength="45.357" font-family="Helvetica">oversold</text></g><!--entity refunds--><g data-ref="refund-log-monday" class="entity" data-qualified-name="refunds" id="ent0007" data-source-line="44"><title>Refund log (Monday) (causal-chain.puml:44)</title><path d="M191.709,640.311 L191.709,670.405 A2.5,2.5 0 0 0 194.209,672.905 L321.269,672.905 A2.5,2.5 0 0 0 323.769,670.405 L323.769,647.811 L313.769,637.811 L194.209,637.811 A2.5,2.5 0 0 0 191.709,640.311" style="stroke:#000;stroke-width:1;" fill="#FFF"/><path d="M313.769,637.811 L313.769,645.311 A2.5,2.5 0 0 0 316.269,647.811 L323.769,647.811" style="stroke:#000;stroke-width:1;" fill="#FFF"/><text x="201.709" y="660.268" fill="#000" font-size="12" textLength="38.695" font-family="Helvetica">Refund</text><text x="240.404" y="660.268" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="243.738" y="660.268" fill="#000" font-size="12" textLength="16.014" font-family="Helvetica">log</text><text x="259.752" y="660.268" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="263.086" y="660.268" fill="#000" font-size="12" textLength="50.684" font-family="Helvetica">(Monday)</text></g><!--entity distributor--><g data-ref="distributor-restock" class="entity" data-qualified-name="distributor" id="ent0008" data-source-line="45"><title>Distributor restock (causal-chain.puml:45)</title><path d="M20.066,62.211 C23.51,57.275 27.034,56.568 31.239,61.333 C33.542,56.478 37.489,55.922 40.806,60.281 C43.976,54.522 50.17,53.091 53.611,60.008 C55.577,54.739 60.659,52.816 64.55,57.992 C67.372,53.035 70.688,52.125 74.473,57.023 C79.047,52.815 82.859,52.303 85.791,58.765 C89.004,54.579 93.729,53.63 96.241,59.494 C99.889,53.614 104.66,54.397 107.391,60.358 C110.249,54.958 115.837,54.175 118.754,60.299 C122.317,54.373 127.549,54.658 130.693,60.716 C141.495,61.178 143.729,67.014 140.611,76.322 C143.978,86.096 141.268,91.669 130.033,90.699 C125.92,95.884 122.227,96.91 118.08,90.736 C116.703,96.151 112.504,97.407 108.343,93.712 C104.766,100.486 99.934,100.46 95.927,94.118 C93.742,99.348 90.41,99.914 86.768,95.502 C82.946,100.609 79.16,101.137 75.364,95.474 C72.108,100.86 66.498,101.465 63.056,95.68 C59.85,100.54 54.887,100.381 52.668,94.708 C48.141,99.569 42.828,97.868 40.981,91.834 C38.156,96.162 33.55,96.239 30.746,91.809 C26.25,97.031 22.43,95.144 19.706,89.934 C11,86.852 11.304,79.726 17.989,74.888 C12.47,69.526 14.155,65.701 20.066,62.211" style="stroke:#000;stroke-width:1;" fill="#FFF"/><text x="25.389" y="79.608" fill="#000" font-size="12" textLength="54.68" font-family="Helvetica">Distributor</text><text x="80.068" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="83.402" y="79.608" fill="#000" font-size="12" textLength="38.678" font-family="Helvetica">restock</text></g><g data-ref="till-pushes-stock-counts-to-the-web-shop" class="entity" data-qualified-name="GMN9" id="ent0010" data-source-line="48"><title>Till pushes stock counts to the web shop overnight only (causal-chain.puml:48)</title><path d="M395.859,347.431 L395.859,363.901 L361.519,367.901 L395.859,371.901 L395.859,387.619 A0,0 0 0 0 395.859,387.619 L577.605,387.619 A0,0 0 0 0 577.605,387.619 L577.605,357.431 L567.605,347.431 L395.859,347.431 A0,0 0 0 0 395.859,347.431" style="stroke:#000;stroke-width:1;" fill="#FFF"/><path d="M567.605,347.431 L567.605,357.431 L577.605,357.431 L567.605,347.431" style="stroke:#000;stroke-width:1;" fill="#FFF"/><text x="401.859" y="364.888" fill="#000" font-size="12" textLength="15.328" font-family="Helvetica">Till</text><text x="417.187" y="364.888" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="420.521" y="364.888" fill="#000" font-size="12" textLength="38.695" font-family="Helvetica">pushes</text><text x="459.216" y="364.888" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="462.55" y="364.888" fill="#000" font-size="12" textLength="28.008" font-family="Helvetica">stock</text><text x="490.558" y="364.888" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="493.892" y="364.888" fill="#000" font-size="12" textLength="35.355" font-family="Helvetica">counts</text><text x="529.247" y="364.888" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="532.581" y="364.888" fill="#000" font-size="12" textLength="10.008" font-family="Helvetica">to</text><text x="542.589" y="364.888" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="545.923" y="364.888" fill="#000" font-size="12" textLength="16.682" font-family="Helvetica">the</text><text x="401.859" y="379.982" fill="#000" font-size="12" textLength="22.014" font-family="Helvetica">web</text><text x="423.872" y="379.982" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="427.206" y="379.982" fill="#000" font-size="12" textLength="26.021" font-family="Helvetica">shop</text><text x="453.228" y="379.982" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="456.562" y="379.982" fill="#000" font-size="12" textLength="49.365" font-family="Helvetica">overnight</text><text x="505.927" y="379.982" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="509.261" y="379.982" fill="#000" font-size="12" textLength="22.014" font-family="Helvetica">only</text></g><g data-ref="could-it-restock-in-time" class="entity" data-qualified-name="GMN12" id="ent0013" data-source-line="52"><title>Could it restock in time? (causal-chain.puml:52)</title><path d="M172.209,62.151 L172.209,70.901 L137.169,74.901 L172.209,78.901 L172.209,87.245 A0,0 0 0 0 172.209,87.245 L321.259,87.245 A0,0 0 0 0 321.259,87.245 L321.259,72.151 L311.259,62.151 L172.209,62.151 A0,0 0 0 0 172.209,62.151" style="stroke:#000;stroke-width:1;" fill="#FFF"/><path d="M311.259,62.151 L311.259,72.151 L321.259,72.151 L311.259,62.151" style="stroke:#000;stroke-width:1;" fill="#FFF"/><text x="178.209" y="79.608" fill="#000" font-size="12" textLength="31.354" font-family="Helvetica">Could</text><text x="209.562" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="212.896" y="79.608" fill="#000" font-size="12" textLength="6" font-family="Helvetica">it</text><text x="218.896" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="222.23" y="79.608" fill="#000" font-size="12" textLength="38.678" font-family="Helvetica">restock</text><text x="260.908" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="264.242" y="79.608" fill="#000" font-size="12" textLength="9.34" font-family="Helvetica">in</text><text x="273.582" y="79.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="276.916" y="79.608" fill="#000" font-size="12" textLength="29.344" font-family="Helvetica">time?</text></g><!--link radio to traffic--><g data-ref="link-radio-announces-the-signing-to-walk-in-traffic-3x-normal" data-from="radio-announces-the-signing" data-to="walk-in-traffic-3x-normal" class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk15" data-source-line="55" data-link-type="dependency"><title>radio-announces-the-signing → walk-in-traffic-3x-normal: Thursday (causal-chain.puml:55)</title><path d="M406.709,92.591 C406.709,110.811 406.709,133.891 406.709,152.051" style="stroke:#000;stroke-width:1;" fill="none" id="radio-to-traffic"/><polygon points="406.709,157.051,410.709,148.051,406.709,152.051,402.709,148.051,406.709,157.051" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="355.709" y="121.278" fill="#000" font-size="12" textLength="50.021" font-family="Helvetica">Thursday</text></g><!--link traffic to shelf--><g data-ref="link-walk-in-traffic-3x-normal-to-shelf-stock-runs-out" data-from="walk-in-traffic-3x-normal" data-to="shelf-stock-runs-out" class="link" data-entity-1="ent0002" data-entity-2="ent0003" id="lnk16" data-source-line="56" data-link-type="dependency"><title>walk-in-traffic-3x-normal → shelf-stock-runs-out: Saturday (causal-chain.puml:56)</title><path d="M314.409,192.681 C314.409,209.681 314.409,230.101 314.409,247.081" style="stroke:#000;stroke-width:1;" fill="none" id="traffic-to-shelf"/><polygon points="314.409,252.081,318.409,243.081,314.409,247.081,310.409,243.081,314.409,252.081" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="265.409" y="218.838" fill="#000" font-size="12" textLength="48.029" font-family="Helvetica">Saturday</text></g><!--link shelf to sync--><g data-ref="link-shelf-stock-runs-out-to-web-stock-in-sync" data-from="shelf-stock-runs-out" data-to="web-stock-in-sync" class="link" data-entity-1="ent0003" data-entity-2="ent0004" id="lnk17" data-source-line="57" data-link-type="dependency"><title>shelf-stock-runs-out → web-stock-in-sync: link-shelf-stock-runs-out-to-web-stock-in-sync (causal-chain.puml:57)</title><path d="M257.739,287.791 C257.739,307.171 257.739,332.591 257.739,349.711" style="stroke:#000;stroke-width:1;" fill="none" id="shelf-to-sync"/><polygon points="257.739,354.711,261.739,345.711,257.739,349.711,253.739,345.711,257.739,354.711" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><!--link sync to stale--><g data-ref="link-web-stock-in-sync-to-web-shop-sells-on-stale-count" data-from="web-stock-in-sync" data-to="web-shop-sells-on-stale-count" class="link" data-entity-1="ent0004" data-entity-2="ent0005" id="lnk18" data-source-line="58" data-link-type="dependency"><title>web-stock-in-sync → web-shop-sells-on-stale-count: no, overnight sync (causal-chain.puml:58)</title><path d="M257.739,380.291 C257.739,397.451 257.739,423.041 257.739,442.431" style="stroke:#000;stroke-width:1;" fill="none" id="sync-to-stale"/><polygon points="257.739,447.431,261.739,438.431,257.739,442.431,253.739,438.431,257.739,447.431" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="159.739" y="410.318" fill="#000" font-size="12" textLength="16.682" font-family="Helvetica">no,</text><text x="176.42" y="410.318" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="179.754" y="410.318" fill="#000" font-size="12" textLength="49.365" font-family="Helvetica">overnight</text><text x="229.119" y="410.318" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="232.453" y="410.318" fill="#000" font-size="12" textLength="24.674" font-family="Helvetica">sync</text></g><!--link stale to oversold--><g data-ref="link-web-shop-sells-on-stale-count-to-40-copies-oversold" data-from="web-shop-sells-on-stale-count" data-to="40-copies-oversold" class="link" data-entity-1="ent0005" data-entity-2="ent0006" id="lnk19" data-source-line="59" data-link-type="dependency"><title>web-shop-sells-on-stale-count → 40-copies-oversold: link-web-shop-sells-on-stale-count-to-40-copies-oversold (causal-chain.puml:59)</title><path d="M257.739,483.051 C257.739,500.051 257.739,520.481 257.739,537.451" style="stroke:#000;stroke-width:1;" fill="none" id="stale-to-oversold"/><polygon points="257.739,542.451,261.739,533.451,257.739,537.451,253.739,533.451,257.739,542.451" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><!--link oversold to refunds--><g data-ref="link-40-copies-oversold-to-refund-log-monday" data-from="40-copies-oversold" data-to="refund-log-monday" class="link" data-entity-1="ent0006" data-entity-2="ent0007" id="lnk20" data-source-line="60" data-link-type="dependency"><title>40-copies-oversold → refund-log-monday: link-40-copies-oversold-to-refund-log-monday (causal-chain.puml:60)</title><path d="M257.739,578.151 C257.739,595.151 257.739,615.571 257.739,632.551" style="stroke:#000;stroke-width:1;" fill="none" id="oversold-to-refunds"/><polygon points="257.739,637.551,261.739,628.551,257.739,632.551,253.739,628.551,257.739,637.551" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><!--link distributor to shelf--><g data-ref="link-distributor-restock-to-shelf-stock-runs-out" data-from="distributor-restock" data-to="shelf-stock-runs-out" class="link" data-entity-1="ent0008" data-entity-2="ent0003" id="lnk21" data-source-line="61" data-link-type="dependency"><title>distributor-restock → shelf-stock-runs-out: not stated (causal-chain.puml:61)</title><path d="M73.739,97.471 C73.739,148.961 73.739,269.901 73.739,269.901 C73.739,269.901 136.409,269.901 189.669,269.901" style="stroke:#000;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="distributor-to-shelf"/><polygon points="194.669,269.901,185.669,265.901,189.669,269.901,185.669,273.901,194.669,269.901" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="20.739" y="240.608" fill="#000" font-size="12" textLength="16.682" font-family="Helvetica">not</text><text x="37.42" y="240.608" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="40.754" y="240.608" fill="#000" font-size="12" textLength="32.689" font-family="Helvetica">stated</text></g><g class="legend" data-source-line="63"><rect x="365.802" y="686.905" width="214.803" height="119.656" fill="none" style="stroke:#999;stroke-width:1;" rx="7.5" ry="7.5"/><text x="374.136" y="706.362" fill="#000" font-size="12" textLength="28.014" font-weight="700" font-family="Helvetica">Mark</text><text x="447.525" y="706.362" fill="#000" font-size="12" textLength="48.668" font-weight="700" font-family="Helvetica">Meaning</text><text x="374.136" y="721.456" fill="#000" font-size="12" textLength="66.721" font-family="Helvetica">rounded box</text><text x="447.525" y="721.456" fill="#000" font-size="12" textLength="29.355" font-family="Helvetica">event</text><text x="374.136" y="736.549" fill="#000" font-size="12" textLength="46.043" font-family="Helvetica">hexagon</text><text x="447.525" y="736.549" fill="#000" font-size="12" textLength="31.348" font-family="Helvetica">check</text><text x="374.136" y="751.643" fill="#000" font-size="12" textLength="28.688" font-family="Helvetica">cloud</text><text x="447.525" y="751.643" fill="#000" font-size="12" textLength="84.035" font-family="Helvetica">external service</text><text x="374.136" y="766.737" fill="#000" font-size="12" textLength="59.385" font-family="Helvetica">note shape</text><text x="447.525" y="766.737" fill="#000" font-size="12" textLength="52.699" font-family="Helvetica">document</text><rect x="370.802" y="769.374" width="73.389" height="15.094" fill="#FADBD8" style="stroke:none;"/><text x="370.802" y="781.831" fill="#000" font-size="12" font-family="Helvetica"> </text><text x="447.525" y="781.831" fill="#000" font-size="12" textLength="32.684" font-family="Helvetica">failure</text><text x="374.136" y="796.924" fill="#000" font-size="12" textLength="61.383" font-family="Helvetica">dashed line</text><text x="447.525" y="796.924" fill="#000" font-size="12" textLength="124.746" font-family="Helvetica">not stated in the source</text><line x1="370.802" y1="693.905" x2="575.605" y2="693.905" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="708.999" x2="575.605" y2="708.999" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="724.092" x2="575.605" y2="724.092" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="739.186" x2="575.605" y2="739.186" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="754.28" x2="575.605" y2="754.28" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="769.374" x2="575.605" y2="769.374" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="784.467" x2="575.605" y2="784.467" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="799.561" x2="575.605" y2="799.561" style="stroke:#000;stroke-width:1;"/><line x1="370.802" y1="693.905" x2="370.802" y2="799.561" style="stroke:#000;stroke-width:1;"/><line x1="444.191" y1="693.905" x2="444.191" y2="799.561" style="stroke:#000;stroke-width:1;"/><line x1="575.605" y1="693.905" x2="575.605" y2="799.561" style="stroke:#000;stroke-width:1;"/></g></g></svg>
+</main>
+<footer>Drag to pan, wheel or pinch to zoom, double-click to reset, click an element to keep it highlighted. Hover shows the element's details.</footer>
+<script>
+(function () {
+  var ID = "ps-f546fae9", WHEEL_NEEDS_MODIFIER = false;
+  function find() {
+    var s = document.getElementById(ID); if (s && !s.__ps) return s;
+    var all = document.querySelectorAll("*");
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].shadowRoot; if (!r) continue;
+      var t = r.getElementById(ID); if (t && !t.__ps) return t;
+    }
+    return null;
+  }
+  var svg = find(); if (!svg) return; svg.__ps = true;
+  svg.classList.add("ps-js");
+  var root = svg.getRootNode();
+  var vb0 = svg.getAttribute("viewBox").split(/[\s,]+/).map(Number), vb = vb0.slice();
+  svg.__psVB0 = vb0.join(" ");
+  function setVB() { svg.setAttribute("viewBox", vb.join(" ")); }
+  var groups = svg.querySelectorAll("g[data-ref]"), links = svg.querySelectorAll("g[data-from]");
+  function related(ref) {
+    var on = {}; on[ref] = 1;
+    for (var i = 0; i < links.length; i++) {
+      var l = links[i];
+      if (l.getAttribute("data-from") === ref || l.getAttribute("data-to") === ref || l.getAttribute("data-ref") === ref) {
+        on[l.getAttribute("data-ref")] = 1; on[l.getAttribute("data-from")] = 1; on[l.getAttribute("data-to")] = 1;
+      }
+    }
+    return on;
+  }
+  var sticky = null;
+  function focus(ref) {
+    var on = ref ? related(ref) : {};
+    svg.classList.toggle("ps-focus", !!ref);
+    for (var i = 0; i < groups.length; i++) groups[i].classList.toggle("ps-on", !!on[groups[i].getAttribute("data-ref")]);
+  }
+  function refAt(e) { var g = e.target.closest ? e.target.closest("g[data-ref]") : null; return g ? g.getAttribute("data-ref") : null; }
+  svg.addEventListener("mouseover", function (e) { if (!sticky) focus(refAt(e)); });
+  svg.addEventListener("mouseleave", function () { if (!sticky) focus(null); });
+  function zoom(f, cx, cy) {
+    var r = svg.getBoundingClientRect(); if (!r.width) return;
+    var px = cx === undefined ? 0.5 : (cx - r.left) / r.width, py = cy === undefined ? 0.5 : (cy - r.top) / r.height;
+    var x = vb[0] + px * vb[2], y = vb[1] + py * vb[3];
+    vb[2] *= f; vb[3] *= f; vb[0] = x - px * vb[2]; vb[1] = y - py * vb[3]; setVB();
+  }
+  function reset() { vb = vb0.slice(); setVB(); sticky = null; focus(null); }
+  var ptrs = {}, drag = null, moved = 0, pinch = 0;
+  svg.addEventListener("pointerdown", function (e) {
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY }; moved = 0;
+    if (Object.keys(ptrs).length === 1) drag = { x: e.clientX, y: e.clientY, vb: vb.slice() };
+    svg.setPointerCapture(e.pointerId);
+  });
+  svg.addEventListener("pointermove", function (e) {
+    if (!ptrs[e.pointerId]) return;
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
+    var ids = Object.keys(ptrs);
+    if (ids.length === 2) {
+      var a = ptrs[ids[0]], b = ptrs[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinch) zoom(pinch / d, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      pinch = d; moved = 99; drag = null; return;
+    }
+    if (!drag) return;
+    var r = svg.getBoundingClientRect(), k = vb[2] / r.width;
+    moved = Math.max(moved, Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y));
+    vb[0] = drag.vb[0] - (e.clientX - drag.x) * k; vb[1] = drag.vb[1] - (e.clientY - drag.y) * k; setVB();
+  });
+  function up(e) { delete ptrs[e.pointerId]; if (Object.keys(ptrs).length < 2) pinch = 0; if (!Object.keys(ptrs).length) drag = null; }
+  svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
+  svg.addEventListener("click", function (e) {
+    if (moved > 3) { e.stopPropagation(); e.preventDefault(); return; }
+    var ref = refAt(e); sticky = ref && ref !== sticky ? ref : null; focus(sticky);
+  });
+  svg.addEventListener("dblclick", function (e) { e.preventDefault(); reset(); });
+  svg.addEventListener("wheel", function (e) {
+    if (WHEEL_NEEDS_MODIFIER && !(e.ctrlKey || e.metaKey)) return;
+    e.preventDefault(); zoom(e.deltaY < 0 ? 0.9 : 1.1, e.clientX, e.clientY);
+  }, { passive: false });
+  // Full screen: a clone of the SVG in a viewport overlay on document.body (outside any shadow
+  // root), with its own pan/zoom (wheel needs no modifier there), legend toggle and close.
+  function panzoom(el) {
+    var v0 = el.getAttribute("viewBox").split(/[\s,]+/).map(Number), v = v0.slice();
+    function set() { el.setAttribute("viewBox", v.join(" ")); }
+    function z(f, cx, cy) {
+      var r = el.getBoundingClientRect(); if (!r.width) return;
+      var px = cx === undefined ? 0.5 : (cx - r.left) / r.width, py = cy === undefined ? 0.5 : (cy - r.top) / r.height;
+      var x = v[0] + px * v[2], y = v[1] + py * v[3];
+      v[2] *= f; v[3] *= f; v[0] = x - px * v[2]; v[1] = y - py * v[3]; set();
+    }
+    var d = null;
+    el.addEventListener("pointerdown", function (e) { d = { x: e.clientX, y: e.clientY, v: v.slice() }; el.setPointerCapture(e.pointerId); });
+    el.addEventListener("pointermove", function (e) {
+      if (!d) return; var r = el.getBoundingClientRect(), k = v[2] / r.width;
+      v[0] = d.v[0] - (e.clientX - d.x) * k; v[1] = d.v[1] - (e.clientY - d.y) * k; set();
+    });
+    function stop() { d = null; }
+    el.addEventListener("pointerup", stop); el.addEventListener("pointercancel", stop);
+    el.addEventListener("wheel", function (e) { e.preventDefault(); z(e.deltaY < 0 ? 0.9 : 1.1, e.clientX, e.clientY); }, { passive: false });
+    el.addEventListener("dblclick", function (e) { e.preventDefault(); v = v0.slice(); set(); });
+    return { zoom: z, reset: function () { v = v0.slice(); set(); } };
+  }
+  function fullScreen() {
+    var old = document.getElementById(ID + "-full-overlay"); if (old) old.remove();
+    var ov = document.createElement("div"); ov.id = ID + "-full-overlay";
+    ov.setAttribute("style", "position:fixed;inset:0;z-index:2147483000;background:rgba(20,19,17,.92);display:flex;flex-direction:column;");
+    var top = document.createElement("div");
+    top.setAttribute("style", "display:flex;gap:6px;justify-content:flex-end;padding:10px 14px;");
+    var mk = function (label, tip) { var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.title = tip;
+      b.setAttribute("style", "font:13px/1 system-ui,sans-serif;padding:6px 10px;border:1px solid #777;border-radius:6px;background:#fff;color:#1b1a18;cursor:pointer"); return b; };
+    var bIn = mk("+", "Zoom in"), bOut = mk("−", "Zoom out"), bReset = mk("Reset", "Reset view"), bLeg = mk("Legend", "Show or hide the legend"), bClose = mk("✕ Close", "Close (Esc)");
+    [bIn, bOut, bReset, bLeg, bClose].forEach(function (b) { top.appendChild(b); });
+    var stage = document.createElement("div"); stage.setAttribute("style", "flex:1;min-height:0;padding:0 14px 14px;");
+    var clone = svg.cloneNode(true); clone.id = ID + "-full"; clone.classList.remove("ps-js", "ps-focus", "ps-nolegend");
+    clone.setAttribute("viewBox", svg.__psVB0); clone.setAttribute("style", "width:100%;height:100%;display:block;background:#fff;border-radius:8px;cursor:grab;touch-action:none");
+    clone.querySelectorAll("g[data-ref].ps-on").forEach(function (g) { g.classList.remove("ps-on"); });
+    var st = root.querySelector ? root.querySelector("style") : null;
+    if (st) { var s2 = document.createElement("style"); s2.textContent = st.textContent.split("#" + ID).join("#" + ID + "-full"); ov.appendChild(s2); }
+    stage.appendChild(clone); ov.appendChild(top); ov.appendChild(stage); document.body.appendChild(ov);
+    var pz = panzoom(clone);
+    function close() { ov.remove(); document.removeEventListener("keydown", onKey); }
+    function onKey(e) { if (e.key === "Escape") close(); }
+    document.addEventListener("keydown", onKey);
+    bIn.addEventListener("click", function () { pz.zoom(0.8); }); bOut.addEventListener("click", function () { pz.zoom(1.25); });
+    bReset.addEventListener("click", pz.reset); bLeg.addEventListener("click", function () { clone.classList.toggle("ps-nolegend"); });
+    bClose.addEventListener("click", close);
+    ov.addEventListener("click", function (e) { if (e.target === ov || e.target === stage) close(); });
+  }
+  var bar = root.querySelector ? root.querySelector('.ps-bar[data-for="' + ID + '"]') : null;
+  if (bar) bar.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return; e.stopPropagation();
+    var act = b.getAttribute("data-act");
+    if (act === "in") zoom(0.8); else if (act === "out") zoom(1.25); else if (act === "reset") reset();
+    else if (act === "legend") svg.classList.toggle("ps-nolegend"); else if (act === "full") fullScreen();
+  });
+  svg.__psReset = reset;
+})();
+</script>
+<script>
+(function () {
+  var svg = document.querySelector("main.card svg"), bar = document.querySelector(".card .ps-bar");
+  document.querySelectorAll("header button[data-act]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = bar.querySelector('[data-act="' + b.getAttribute("data-act") + '"]'); if (t) t.click(); });
+  });
+  document.getElementById("ps-theme").addEventListener("click", function () {
+    var r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    r.dataset.theme = dark ? "light" : "dark";
+  });
+  document.getElementById("ps-png").addEventListener("click", function () {
+    var clone = svg.cloneNode(true), vb = (svg.__psVB0 || svg.getAttribute("viewBox")).split(/[\s,]+/).map(Number);
+    clone.setAttribute("viewBox", vb.join(" ")); clone.setAttribute("width", vb[2]); clone.setAttribute("height", vb[3]);
+    clone.removeAttribute("style"); clone.classList.remove("ps-focus", "ps-nolegend");
+    var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(clone));
+    var img = new Image();
+    img.onload = function () {
+      var c = document.createElement("canvas"); c.width = vb[2] * 2; c.height = vb[3] * 2;
+      var g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob(function (blob) { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = document.title.replace(/[^\w.-]+/g, "-") + ".png"; a.click(); });
+    };
+    img.src = url;
+  });
+  document.documentElement.dataset.psReady = "1";
+})();
+</script>
+</body>
+</html>

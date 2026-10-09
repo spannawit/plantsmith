@@ -1,0 +1,59 @@
+@startuml
+' Source (synthetic brief): the bookshop's ArchiMate layer view. Business: the shop manager uses the
+' "daily sales review" process, served by the sales reporting application service. Application: the
+' reporting app realizes that service and reads the sales warehouse component. Technology: both run
+' on the bookshop's single Linux server with PostgreSQL.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam wrapWidth 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+skinparam nodesep 50
+skinparam ranksep 70
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+</style>
+!include <archimate/Archimate>
+' The library sets its own line type: set ortho after the include.
+skinparam linetype ortho
+' house-preamble-end
+
+title ArchiMate layer view for the bookshop's sales reporting (synthetic)
+
+Grouping(business, "Business layer") {
+  Business_Actor(manager, "Shop manager")
+  Business_Process(review, "Daily sales review")
+}
+Grouping(application, "Application layer") {
+  Application_Service(svc, "Sales reporting service")
+  Application_Component(app, "Reporting app")
+  Application_Component(dw, "Sales warehouse")
+}
+Grouping(technology, "Technology layer") {
+  Technology_Node(server, "Linux server")
+  Technology_SystemSoftware(pg, "PostgreSQL")
+}
+
+skinparam ranksep 90
+Rel_Assignment(manager, review, "performs")
+Rel_Serving_Up(svc, review, "serves")
+Rel_Realization_Up(app, svc, "realizes")
+Rel_Access_r(app, dw, "reads")
+Rel_Realization_Up(server, app, "hosts")
+Rel_Realization_Up(pg, dw, "stores")
+
+legend right
+  |= Mark |= Meaning |
+  | yellow | business layer element |
+  | blue | application layer element |
+  | green | technology layer element |
+  | dashed frame | ArchiMate layer (a logical grouping), business on top |
+  | dotted arrow, hollow head | realization |
+  | solid arrow, open head | serving |
+  | solid line, dot | assignment |
+  | dotted arrow | access (read) |
+endlegend
+@enduml

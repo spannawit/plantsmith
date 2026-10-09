@@ -1,0 +1,34 @@
+@startmindmap
+' Source (synthetic brief): brainstorm for the bookshop's next sales report: add revenue by author and
+' by week; show stock-outs; open questions: is the till CSV late on Sundays, and who reads it on
+' weekends.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+mindmapDiagram {
+  .open { BackgroundColor #FFF3E0 }
+}
+</style>
+' house-preamble-end
+
+title Mind map for the next sales report (synthetic)
+
+* Next sales report
+** Revenue
+*** by author
+*** by week
+** Stock-outs
+left side
+** Till CSV late on Sundays? <<open>>
+** Who reads it on weekends? <<open>>
+
+legend bottom
+  |= Mark |= Meaning |
+  |<#FFF3E0>| open question |
+endlegend
+@endmindmap

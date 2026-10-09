@@ -1,0 +1,30 @@
+
+title Container diagram for <software system> (as-of date)
+
+' C4 vocabulary (STYLE.md rules 11-12; reference § C4). Every element: a macro, a name and a
+' short description; every Container also its technology. One abstraction level per diagram.
+'   Person(alias, "Name", "What they do")
+'   System_Ext(alias, "Name", "What it is")
+'   System_Boundary(alias, "The system in scope") { Container(...) ... }
+'   Container(alias, "Name", "Technology", "Responsibility")
+'   ContainerDb(alias, "Name", "Technology", "What it stores")
+'   ContainerQueue(alias, "Name", "Technology", "What it carries")
+' Relationships: one direction, labelled with intent, protocol between containers:
+'   Rel(from, to, "Publishes order events to", "Kafka")
+'   Rel_D / Rel_U / Rel_L / Rel_R steer placement; Lay_D(a, b) / Lay_R(a, b) pin without a line.
+' Thin source: Rel(a, b, "Sends files to", "S3", $tags="inferred")   (dashed, legend row)
+' Failure point: Container(alias, "Name", "Tech", "Why it fails", $tags="failure")
+
+Person(user, "Replace: person", "Replace: what they do")
+System_Boundary(sys, "Replace: the system in scope") {
+  Container(app, "Replace: container", "Replace: technology", "Replace: responsibility")
+  ContainerDb(db, "Replace: store", "Replace: technology", "Replace: what it stores")
+}
+System_Ext(ext, "Replace: external system", "Replace: what it is")
+
+Rel(user, app, "Replace: intent of the call", "HTTPS")
+Rel_D(app, db, "Replace: intent of the write", "SQL")
+Rel(app, ext, "Replace: intent", "HTTPS", $tags="inferred")
+
+SHOW_LEGEND()
+@enduml

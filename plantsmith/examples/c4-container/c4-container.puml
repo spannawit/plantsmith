@@ -1,0 +1,65 @@
+@startuml
+' Source (synthetic brief): The bookshop's online system. Customers browse and order books in the
+' web shop (Python, Django), which stores orders in the Orders DB (PostgreSQL) and takes card
+' payments through an external payment provider over HTTPS. A nightly report job (Python, cron)
+' reads the day's orders and the till system's CSV export, writes the Reporting DB (PostgreSQL)
+' and e-mails the daily sales PDF to the shop manager.
+' Not stated: how the till CSV export reaches the report job.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam nodesep 120
+skinparam ranksep 110
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+</style>
+!include <C4/C4_Container>
+LAYOUT_TOP_DOWN()
+' House palette: one colour per element type, each with its legend text (STYLE rule 9).
+UpdateElementStyle("person", $bgColor="#F3E5F5", $fontColor="#000000", $borderColor="#8E6CA8", $legendText="person")
+UpdateElementStyle("system", $bgColor="#E3F2FD", $fontColor="#000000", $borderColor="#5B8DB8", $legendText="software system")
+UpdateElementStyle("external_system", $bgColor="#EEEEEE", $fontColor="#000000", $borderColor="#888888", $legendText="external system")
+UpdateElementStyle("container", $bgColor="#E3F2FD", $fontColor="#000000", $borderColor="#5B8DB8", $legendText="container")
+UpdateElementStyle("external_container", $bgColor="#EEEEEE", $fontColor="#000000", $borderColor="#888888", $legendText="external container")
+AddElementTag("failure", $bgColor="#FADBD8", $fontColor="#000000", $borderColor="#C0392B", $legendText="failure point")
+AddRelTag("inferred", $lineStyle=DashedLine(), $legendText="inferred, not stated in the source")
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+
+title Container diagram for the bookshop online system (synthetic)
+skinparam nodesep 200
+
+System_Ext(till, "Till system", "In-store sales, exports a daily CSV")
+Person(customer, "Customer", "Browses and orders books online")
+
+System_Boundary(shop, "Bookshop online system") {
+  Container(report, "Nightly report job", "Python, cron", "Builds the daily sales figures")
+  Container(web, "Web shop", "Python, Django", "Catalogue, basket and checkout")
+  ContainerDb(reporting, "Reporting DB", "PostgreSQL", "Daily sales by title")
+  ContainerDb(orders, "Orders DB", "PostgreSQL", "Orders and order lines")
+}
+Person(manager, "Shop manager", "Reads the daily sales report")
+System_Ext(payments, "Payment provider", "Takes card payments")
+
+Rel_D(till, report, "Sends the daily CSV to", "file", $tags="inferred")
+Rel_D(customer, web, "Orders books in", "HTTPS")
+Rel_D(report, reporting, "Writes sales to", "SQL")
+Rel_D(report, orders, "Reads orders from", "SQL")
+Rel_D(web, orders, "Saves orders to", "SQL")
+Rel_R(web, payments, "Takes payments via", "HTTPS")
+Rel_L(report, manager, "E-mails the PDF to", "SMTP")
+
+SHOW_LEGEND()
+@enduml

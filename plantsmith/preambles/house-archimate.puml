@@ -1,0 +1,25 @@
+@startuml
+' House preamble for ArchiMate layer views (stdlib `archimate` 3.2.2). Start from this file,
+' edit below the end marker. Layer order (STYLE rule 20): business on top, application in the
+' middle, technology at the bottom, each layer a Grouping frame; a relation that runs from a
+' lower layer to a higher one is written with the `_Up` variant so the layers stay stacked:
+'   Rel_Serving_Up(app, business_process, "serves")   Rel_Realization_Up(node, app, "hosts")
+' Elements: Business_Actor, Business_Process, Business_Service, Application_Component,
+' Application_Service, Technology_Node, Technology_SystemSoftware. Every relation has a label.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam wrapWidth 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+skinparam nodesep 50
+skinparam ranksep 70
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+</style>
+!include <archimate/Archimate>
+' The library sets its own line type: set ortho after the include.
+skinparam linetype ortho
+' house-preamble-end

@@ -1,0 +1,89 @@
+@startuml
+' Source (synthetic brief): Nightly sales report. 01:00 extract: the till CSV export
+' and the web orders API are loaded into the staging DB. 02:00 transform: orders are
+' deduplicated, joined to the catalogue, and row counts are compared per day.
+' 03:00 publish: on a match, the reporting DB is refreshed and a daily sales PDF is
+' written; on a mismatch, the shop manager is alerted.
+' Not stated: whether a failed run is re-run automatically.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+
+title Nightly sales report pipeline (DAG)
+
+package "Extract 01:00" <<group1>> {
+  file "Till CSV export" as csv
+  cloud "Web orders API" as api
+  rectangle "Load raw files" as load
+}
+package "Transform 02:00" <<group2>> {
+  database "Staging DB" as staging
+  rectangle "Deduplicate orders" as dedupe
+  rectangle "Join catalogue" as join
+  hexagon "Row counts match?" as counts
+}
+package "Publish 03:00" <<group3>> {
+  database "Reporting DB" as reporting
+  file "Daily sales PDF" as pdf
+}
+rectangle "Alert shop manager" as alert <<failure>>
+
+note right of counts
+  Compares till rows with web rows
+  per business day
+end note
+note right of alert
+  not stated: whether a failed
+  run is re-run automatically
+end note
+
+csv --> load
+api --> load
+load --> staging
+staging --> dedupe
+dedupe --> join
+join --> counts
+counts --> reporting : match
+counts --> alert : mismatch
+reporting --> pdf
+
+legend right
+  |= Mark |= Meaning |
+  | rounded box | task |
+  | cylinder | data store |
+  | cloud | external API |
+  | hexagon | check |
+  | note shape | file or report |
+  |<#E3F2FD>| extract stage |
+  |<#E8F5E9>| transform stage |
+  |<#FFF3E0>| publish stage |
+  |<#FADBD8>| failure path |
+  | "not stated" note | source gap |
+endlegend
+@enduml

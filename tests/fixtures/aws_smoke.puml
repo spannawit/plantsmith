@@ -1,0 +1,76 @@
+@startuml
+' Smoke file: every service include listed in preambles/house-aws.puml, one element each.
+!theme plain
+hide stereotype
+!include <awslib20/AWSCommon>
+!include <awslib20/Groups/AWSCloud>
+!include <awslib20/Groups/Region>
+!include <awslib20/Groups/VPC>
+!include <awslib20/Groups/AvailabilityZone>
+!include <awslib20/Groups/PublicSubnet>
+!include <awslib20/Groups/PrivateSubnet>
+!include <awslib20/Groups/AutoScalingGroup>
+!include <awslib20/Analytics/Redshift>
+!include <awslib20/Storage/SimpleStorageService>
+!include <awslib20/Storage/SimpleStorageServiceBucket>
+!include <awslib20/Analytics/Glue>
+!include <awslib20/Analytics/Athena>
+!include <awslib20/Analytics/LakeFormation>
+!include <awslib20/Analytics/QuickSight>
+!include <awslib20/Containers/ElasticKubernetesService>
+!include <awslib20/ApplicationIntegration/ManagedWorkflowsforApacheAirflow>
+!include <awslib20/ApplicationIntegration/StepFunctions>
+!include <awslib20/ApplicationIntegration/EventBridge>
+!include <awslib20/ApplicationIntegration/SimpleQueueService>
+!include <awslib20/ApplicationIntegration/SimpleNotificationService>
+!include <awslib20/Compute/EC2>
+!include <awslib20/Compute/EC2Instance>
+!include <awslib20/Compute/Lambda>
+!include <awslib20/Database/RDS>
+!include <awslib20/Database/Aurora>
+!include <awslib20/ManagementGovernance/CloudWatch>
+!include <awslib20/SecurityIdentityCompliance/IdentityandAccessManagement>
+!include <awslib20/NetworkingContentDelivery/VirtualPrivateCloud>
+!include <awslib20/NetworkingContentDelivery/ElasticLoadBalancing>
+!include <awslib20/NetworkingContentDelivery/VPCInternetGateway>
+!include <awslib20/General/Users>
+title AWS icon smoke test
+AWSCloudGroup(cloud, "AWS Cloud") {
+  RegionGroup(region, "Region") {
+    Redshift(i1, "Redshift", "Amazon Redshift")
+    SimpleStorageService(i2, "S3", "Amazon S3")
+    SimpleStorageServiceBucket(i3, "Bucket", "Amazon S3")
+    Glue(i4, "Glue", "AWS Glue")
+    Athena(i5, "Athena", "Amazon Athena")
+    LakeFormation(i6, "Lake Formation", "AWS Lake Formation")
+    QuickSight(i7, "QuickSight", "Amazon QuickSight")
+    ElasticKubernetesService(i8, "EKS", "Amazon EKS")
+    ManagedWorkflowsforApacheAirflow(i9, "MWAA", "Amazon MWAA")
+    StepFunctions(i10, "Step Functions", "AWS Step Functions")
+    EventBridge(i11, "EventBridge", "Amazon EventBridge")
+    SimpleQueueService(i12, "SQS", "Amazon SQS")
+    SimpleNotificationService(i13, "SNS", "Amazon SNS")
+    EC2(i14, "EC2", "Amazon EC2")
+    EC2Instance(i15, "EC2 instance", "Amazon EC2")
+    Lambda(i16, "Lambda", "AWS Lambda")
+    RDS(i17, "RDS", "Amazon RDS")
+    Aurora(i18, "Aurora", "Amazon Aurora")
+    CloudWatch(i19, "CloudWatch", "Amazon CloudWatch")
+    IdentityandAccessManagement(i20, "IAM", "AWS IAM")
+    VirtualPrivateCloud(i21, "VPC", "Amazon VPC")
+    ElasticLoadBalancing(i22, "ELB", "Elastic Load Balancing")
+    VPCInternetGateway(i23, "Internet gateway", "Amazon VPC")
+    Users(i24, "Users", "people")
+    VPCGroup(vpc, "VPC") {
+      AvailabilityZoneGroup(az, "AZ") {
+        PublicSubnetGroup(pub, "Public subnet") {
+        }
+        PrivateSubnetGroup(priv, "Private subnet") {
+          AutoScalingGroupGroup(asg, "Auto Scaling group") {
+          }
+        }
+      }
+    }
+  }
+}
+@enduml

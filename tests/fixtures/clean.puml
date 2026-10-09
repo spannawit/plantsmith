@@ -1,0 +1,19 @@
+@startuml
+' house-preamble-begin
+!theme plain
+skinparam linetype ortho
+skinparam legendBackgroundColor transparent
+<style>
+.group1 { BackgroundColor #E3F2FD }
+</style>
+' house-preamble-end
+title Clean fixture
+package "Shop" <<group1>> {
+  rectangle "Take the order" as a
+  database "Orders DB" as b
+}
+a ..> b : not stated
+legend right
+  |<#E3F2FD>| shop |
+endlegend
+@enduml

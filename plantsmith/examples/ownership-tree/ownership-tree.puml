@@ -1,0 +1,42 @@
+@startwbs
+' Source (synthetic brief): the bookshop's data ownership. The data team owns the sales pipeline
+' (extract and transform) and the reporting database; the web team owns the web shop and the orders
+' database. Deploys to production are decided by the owning team lead, with the shop manager consulted
+' for reporting changes; everyone is told in the weekly note.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+wbsDiagram {
+  .data { BackgroundColor #E3F2FD }
+  .process { BackgroundColor #E8F5E9 }
+  .tooling { BackgroundColor #FFF3E0 }
+  .people { BackgroundColor #F3E5F5 }
+  .failure { BackgroundColor #FADBD8 }
+  .gate { BackgroundColor #FFFFFF; LineThickness 2 }
+}
+</style>
+' house-preamble-end
+
+title Ownership tree for the bookshop's systems (synthetic)
+
+* Bookshop
+** Data team
+*** Sales pipeline
+**** Extract (till CSV, web orders)
+**** Transform
+*** Reporting DB
+** Web team
+*** Web shop
+*** Orders DB
+
+legend bottom
+  |= Decision |= Decides |= Consulted |= Told |
+  | deploy the sales pipeline | data team lead | shop manager | weekly note |
+  | deploy the web shop | web team lead | none stated | weekly note |
+endlegend
+@endwbs

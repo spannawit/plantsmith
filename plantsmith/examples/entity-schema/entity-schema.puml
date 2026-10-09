@@ -1,0 +1,105 @@
+@startuml
+' Source (synthetic brief): Schema `catalogue` holds book (primary key isbn) and
+' author (primary key author_id); book.author_id references author. Schema `sales`
+' holds order (primary key order_id) and order_line (order_id, isbn, qty), where
+' order_line.order_id references order. Sample rows are given for book, order_line
+' and order 5001.
+' Not stated: a key on order_line; whether order_line.isbn references book.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+skinparam linetype ortho
+skinparam lifelineStrategy solid
+skinparam wrapWidth 300
+skinparam maxMessageSize 300
+skinparam legendBackgroundColor transparent
+skinparam legendBorderColor $LEGEND_FRAME
+hide stereotype
+hide circle
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+rectangle { RoundCorner 14 }
+.failure { BackgroundColor #FADBD8 }
+.group1 { BackgroundColor #E3F2FD }
+.group2 { BackgroundColor #E8F5E9 }
+.group3 { BackgroundColor #FFF3E0 }
+.group4 { BackgroundColor #F3E5F5 }
+</style>
+' Numbered steps (optional, STYLE rule 16): $step(1) prints a blue badge in a label, an edge label
+' or a legend table row. Knob STEP_BADGE: the badge colour.
+!$STEP_BADGE = "#1565C0"
+!function $step($n)
+!return "<back:" + $STEP_BADGE + "><color:#FFFFFF><b> " + $n + " </b></color></back>"
+!endfunction
+' house-preamble-end
+
+title Bookshop schema with sample records (entity)
+
+package "catalogue" <<group1>> {
+  entity "author" as author {
+    author_id : int <<PK>>
+    --
+    name : varchar(120)
+  }
+  entity "book" as book {
+    isbn : char(13) <<PK>>
+    --
+    title : varchar(200)
+    author_id : int
+    price : numeric(8,2)
+  }
+}
+package "sales" <<group2>> {
+  entity "order" as order_t {
+    order_id : int <<PK>>
+    --
+    placed_at : timestamp
+    total : numeric(8,2)
+  }
+  entity "order_line" as line {
+    order_id : int
+    {field} isbn : char(13)
+    qty : int
+  }
+}
+
+' Records form (a): Creole table in a note beside the element
+note right of book
+  **Sample rows: book**
+  |= isbn |= title |= price |
+  | 9780000000001 | The Map Room | 18.50 |
+  | 9780000000002 | Salt Roads | 12.00 |
+end note
+
+' Records form (b): Creole table inside an element body
+object "order_line sample rows" as line_rows {
+  |= order_id |= isbn |= qty |
+  | 5001 | 9780000000001 | 1 |
+  | 5001 | 9780000000002 | 1 |
+}
+
+' Records form (c): json block as a records card
+json "order 5001" as order_json {
+  "order_id": 5001,
+  "placed_at": "2026-05-01 10:12",
+  "total": 30.50
+}
+
+book -up-> author : author_id
+line -up-> order_t : order_id
+line .right.> book : isbn
+line_rows .. line
+order_json .. order_t
+
+legend right
+  |= Mark |= Meaning |
+  |<#E3F2FD>| schema catalogue |
+  |<#E8F5E9>| schema sales |
+  | «PK» | key stated in source |
+  | solid line | reference stated |
+  | dashed arrow | inferred reference, not stated in the source |
+  | dotted link | sample records |
+endlegend
+@enduml

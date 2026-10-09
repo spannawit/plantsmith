@@ -1,0 +1,31 @@
+@startuml
+' Smoke file: every Google Cloud include listed in preambles/house-gcp.puml, one element each.
+!theme plain
+hide stereotype
+!include <gcp/GCPCommon>
+!include <gcp/Storage/Cloud_Storage>
+!include <gcp/Data_Analytics/BigQuery>
+!include <gcp/Data_Analytics/Cloud_Dataflow>
+!include <gcp/Data_Analytics/Cloud_PubSub>
+!include <gcp/Data_Analytics/Cloud_Composer>
+!include <gcp/Data_Analytics/Cloud_Dataproc>
+!include <gcp/Compute/Cloud_Functions>
+!include <gcp/Compute/Kubernetes_Engine>
+!include <gcp/Compute/Compute_Engine>
+!include <gcp/Databases/Cloud_SQL>
+!include <gcp/Networking/Virtual_Private_Cloud>
+!include <gcp/Security/Key_Management_Service>
+title Google Cloud icon smoke test
+Cloud_Storage(g1, "Storage", "Cloud Storage")
+BigQuery(g2, "BigQuery", "BigQuery")
+Cloud_Dataflow(g3, "Dataflow", "Dataflow")
+Cloud_PubSub(g4, "Pub/Sub", "Pub/Sub")
+Cloud_Composer(g5, "Composer", "Cloud Composer")
+Cloud_Dataproc(g6, "Dataproc", "Dataproc")
+Cloud_Functions(g7, "Functions", "Cloud Functions")
+Kubernetes_Engine(g8, "GKE", "Google Kubernetes Engine")
+Compute_Engine(g9, "Compute", "Compute Engine")
+Cloud_SQL(g10, "Cloud SQL", "Cloud SQL")
+Virtual_Private_Cloud(g11, "VPC", "VPC network")
+Key_Management_Service(g12, "KMS", "Cloud KMS")
+@enduml

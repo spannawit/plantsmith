@@ -1,0 +1,33 @@
+@startmindmap
+' Mind map for plan or ticket brainstorming: the topic in the middle, branches to the right and
+' (with `left side`) to the left. Edit below the end marker. Lines are drawn by the mind-map
+' engine (short elbows), not routed. Keep it to ideas; facts with sources go in the other types.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+mindmapDiagram {
+  .open { BackgroundColor #FFF3E0 }
+}
+</style>
+' house-preamble-end
+
+title Mind map for <plan or ticket> (as-of date)
+
+* Replace: topic
+** Replace: idea
+*** Replace: detail
+** Replace: idea
+left side
+** Replace: question <<open>>
+** Replace: risk
+
+legend bottom
+  |= Mark |= Meaning |
+  |<#FFF3E0>| open question |
+endlegend
+@endmindmap

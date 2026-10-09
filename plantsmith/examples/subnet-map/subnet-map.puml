@@ -1,0 +1,43 @@
+@startnwdiag
+' Source (synthetic brief): the bookshop's office network. The internet router joins the DMZ
+' (203.0.113.0/28) where the web shop server sits at .5; the office LAN (192.168.10.0/24) holds the
+' till PC (.20), the reporting server (.30) and the router (.1). The reporting server also joins
+' the backup network (10.0.5.0/24) at .30 with the backup NAS at .2.
+' house-preamble-begin
+' Knob LEGEND_FRAME: colour of the thin frame around the legend ("transparent" removes it).
+!$LEGEND_FRAME = "#999999"
+!theme plain
+<style>
+root { FontName "Helvetica"; FontSize 12 }
+title { FontSize 16 }
+legend { BackgroundColor transparent; LineColor $LEGEND_FRAME }
+</style>
+' house-preamble-end
+
+title Subnet map of the bookshop's office network (synthetic)
+
+nwdiag {
+  network dmz {
+    address = "203.0.113.0/28"
+    router [address = "203.0.113.1"];
+    web [address = "203.0.113.5", description = "web shop server"];
+  }
+  network office {
+    address = "192.168.10.0/24"
+    router [address = "192.168.10.1"];
+    till [address = "192.168.10.20", description = "till PC"];
+    reporting [address = "192.168.10.30", description = "reporting server"];
+  }
+  network backup {
+    address = "10.0.5.0/24"
+    reporting [address = "10.0.5.30"];
+    nas [address = "10.0.5.2", description = "backup NAS"];
+  }
+}
+
+legend right
+  |= Mark |= Meaning |
+  | bar | network, with its address range |
+  | box | host; one drop per network it joins, with its address |
+endlegend
+@endnwdiag

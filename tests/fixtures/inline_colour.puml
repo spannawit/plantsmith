@@ -1,0 +1,16 @@
+@startuml
+' house-preamble-begin
+!theme plain
+skinparam linetype ortho
+skinparam legendBackgroundColor transparent
+<style>
+.group1 { BackgroundColor #E3F2FD }
+</style>
+' house-preamble-end
+title T
+skinparam rectangleBackgroundColor #FFEEEE
+rectangle "A" as a
+legend right
+ |<#FFEEEE>| a |
+endlegend
+@enduml

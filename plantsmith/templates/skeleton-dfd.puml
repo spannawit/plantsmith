@@ -1,0 +1,39 @@
+
+' Data flow / column lineage (STYLE rule 17). Start from preambles/house.puml + this file.
+' Processes are rounded boxes, stores are cylinders, externals are actors; tables whose columns
+' matter are `entity` bodies, and a column-to-column flow is `src::col --> dst::col`.
+' Look at every member edge in step 5: under ortho it can enter at the table's top edge instead of
+' its row (reference § Data flow and column lineage).
+allowmixing
+skinparam nodesep 70
+skinparam ranksep 70
+
+title Data flow diagram for <system or table> (as-of date)
+
+actor "Replace: external source" as ext
+rectangle "Replace: 1. process" as p1
+database "Replace: store" as store
+
+entity "replace.source_table" as src {
+  replace_key : type
+  replace_amount : type
+}
+entity "replace.target_table" as dst {
+  replace_key : type
+  replace_total : type
+}
+
+ext -down-> p1 : Replace: sends rows (protocol)
+p1 -down-> store : Replace: writes (SQL)
+src::replace_key --> dst::replace_key : copied
+src::replace_amount --> dst::replace_total : summed
+
+legend right
+  |= Mark |= Meaning |
+  | actor | external source or sink |
+  | rounded box | process (numbered as in the source) |
+  | cylinder | data store |
+  | table | table whose columns the flow names |
+  | column line | the target column is derived from the source column |
+endlegend
+@enduml
